@@ -1,0 +1,24 @@
+{
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "warn",
+    "react/react-in-jsx-scope": "off",
+    "quotes": ["warn", "single"],
+    "space-infix-ops": 2,
+    "react/prop-types": 0
+  },
+  "env": {
+    "node": true,
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ]
+}
