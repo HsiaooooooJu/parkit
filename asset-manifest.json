@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/parkit/static/css/main.cf92b1b7.css",
+    "main.js": "/parkit/static/js/main.1565a6e7.js",
+    "static/js/787.9c7d906c.chunk.js": "/parkit/static/js/787.9c7d906c.chunk.js",
+    "index.html": "/parkit/index.html",
+    "main.cf92b1b7.css.map": "/parkit/static/css/main.cf92b1b7.css.map",
+    "main.1565a6e7.js.map": "/parkit/static/js/main.1565a6e7.js.map",
+    "787.9c7d906c.chunk.js.map": "/parkit/static/js/787.9c7d906c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cf92b1b7.css",
+    "static/js/main.1565a6e7.js"
+  ]
+}
