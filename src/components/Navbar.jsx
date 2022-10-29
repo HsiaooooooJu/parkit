@@ -45,13 +45,12 @@ export default function Navbar() {
   )
 }
 
-// props for className
 function NavbarLink({ to, children }) {
   const resolvedPath = useResolvedPath(to)
   const isActive = useMatch({ path: resolvedPath.pathname, end: true })
   return (
-    <li className='nav-container_item'>
-      <Link to={to} className={`nav-container_item_link ${isActive ? 'active' : ''}`}>
+    <li className={`nav-container_item ${isActive ? 'active' : ''}`}>
+      <Link to={to} className='nav-container_item_link'>
         {children}
       </Link>
     </li>
