@@ -13,7 +13,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: var(--body-bg);
+  background-color: var(--dark-0);
 }
 
 html {
@@ -23,12 +23,12 @@ html {
 a {
   display: block;
   width: 100%;
-  color: black;
+  color: var(--dark-100);
   text-decoration: none;
 }
 
 a:hover {
-  color: steelblue;
+  color: var(--blue-60);
 }
 
 // h1,
