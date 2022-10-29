@@ -31,20 +31,27 @@
   }
 
   &_item {
-    margin: 0 1rem;
-    padding: 15px 10px;
+    padding: 1rem 1.2rem;
     border-bottom: 1px solid #eee;
-    font-size: 14px;
-    font-weight: 500;
 
     &_link {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
     }
 
     &_img {
-      width: 20px;
+      width: 22px;
       margin-right: 10px;
+    }
+
+    &_title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--dark-100);
+    }
+
+    &_title:hover {
+      color: var(--blue-60);
     }
   }
 
@@ -61,7 +68,7 @@
 }
 
 .active {
-  color: steelblue;
+  background-color: var(--dark-20);
 }
 
 .expanded {
@@ -78,16 +85,22 @@
     max-width: 768px;
     margin: 0 auto;
 
+    &_logo {
+      width: 135px;
+    }
+
     &_list {
       all: unset;
       width: 100%;
       display: flex;
       justify-content: flex-end;
-      margin-right: 1rem;
+      margin-right: 0;
     }
 
     &_item {
-      padding: 0;
+      height: 50px;
+      margin: 0;
+      padding: 15px ;
       border: none;
     }
 
