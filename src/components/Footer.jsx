@@ -3,12 +3,12 @@ import { Link, useMatch, useResolvedPath } from 'react-router-dom'
 
 export default function Footer() {
   return (
-    <footer className="footer">
+    <footer className='footer'>
       <div className='footer-container'>
         <Link to='/' className='footer-container_logo'>
           <img src={logo} />
         </Link>
-        
+
         <div className='footer-container_block'>
           <ul className='footer-container_block_title'>我的</ul>
           <FooterLink to='/favorite' className='footer-container_block_text'>
