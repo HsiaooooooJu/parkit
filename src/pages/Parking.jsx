@@ -1,12 +1,12 @@
 import '../assets/styles/Parking.scss'
+import pinBlue from '../assets/images/pin-blue.svg'
 
 // useMemo memorize the result
-import { useMemo, useRef, useCallback } from 'react'
-import { useLoadScript, GoogleMap } from '@react-google-maps/api'
+import { useMemo, useRef, useCallback, useState } from 'react'
+import { useLoadScript, GoogleMap, Marker } from '@react-google-maps/api'
 import Places from '../components/Places'
 
-// useState
-// Marker, DirectionRenderer, Circle, MarkerCluster
+// DirectionRenderer, Circle, MarkerCluster
 
 // // eslint-disable-next-line no-undef
 // const LatLngLiteral = google.maps.LatLngLiteral
@@ -28,7 +28,10 @@ export default function Parking() {
 }
 
 function Map() {
+  // save the position
   const mapRef = useRef()
+  const [parking, setParking] = useState()
+
   // useMemo: tell React to generate the value once and reuse, unless one of the dependency change which is the second array
   const center = useMemo(() => ({ lat: 25.04, lng: 121.53 }), [])
   const options = useMemo(
@@ -44,18 +47,24 @@ function Map() {
 
   return (
     <div>
-      <div className="map">
-        <Places />
+      <div className='map'>
+        <Places
+          setParking={(position) => {
+            // update parking state and move map to the location
+            setParking(position)
+            mapRef.current.panto()
+          }}
+        />
         <GoogleMap
           zoom={14}
           center={center}
           mapContainerClassName='map-container'
           options={options}
           onLoad={onLoad}
-        ></GoogleMap>
-
+        >
+          {parking && <Marker position={parking} icon={pinBlue} />}
+        </GoogleMap>
       </div>
-      
     </div>
   )
 }
