@@ -55,66 +55,6 @@ button {
   }
 }
 
-// select {
-//   border: none;
-// }
-
-// input:required,
-// input:invalid {
-//   box-shadow: none;
-// }
-
-// %input-style {
-//   height: 35px;
-//   border: none;
-//   font-size: 0.7rem;
-//   background-color: transparent;
-//   letter-spacing: 1px;
-//   -webkit-appearance: none;
-// }
-
-/* Change autocomplete styles in WebKit */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-  border: none;
-  transition: background-color 5000s ease-in-out 0s;
+.container {
+  margin-top: 60px;
 }
-
-// label {
-//   color: var(--dark-80);
-//   font-size: 14px;
-// }
-
-// ::placeholder {
-//   /* Chrome, Firefox, Opera, Safari 10.1+ */
-//   color: var(--dark-60);
-//   opacity: 1;
-//   background-color: transparent;
-//   /* Firefox adds a lower opacity to the placeholder,
-//     so use opacity: 1 to fix this. */
-//   font-size: 16px;
-//   letter-spacing: 0;
-// }
-
-// :-ms-input-placeholder {
-//   /* Internet Explorer 10-11 */
-//   color: var(--dark-60);
-//   background-color: transparent;
-//   font-size: 16px;
-//   letter-spacing: 0;
-// }
-
-// ::-ms-input-placeholder {
-//   /* Microsoft Edge */
-//   color: var(--dark-60);
-//   background-color: transparent;
-//   font-size: 16px;
-//   letter-spacing: 0;
-// }

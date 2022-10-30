@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import './App.scss'
 
 import Navbar from './components/Navbar'
@@ -10,18 +10,25 @@ import QuickNav from './pages/QuickNav'
 import NotFound from './pages/NotFound'
 
 function App() {
+  const wrap = (children) => {
+    return (
+      <>
+        <Navbar />
+        {children}
+        <Footer />
+      </>
+    )
+  }
   return (
     <>
-      <Navbar />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/parkit' element={<Home />} />
-        <Route path='/quick-nav' element={<QuickNav />} />
+        <Route path='/' element={<Navigate replace to='/parkit' />} />
+        <Route path='/parkit' element={wrap(<Home />)} />
+        <Route path='/quick-nav' element={wrap(<QuickNav />)} />
+        <Route path='/setting' element={wrap(<Setting />)} />
         <Route path='/parking' element={<Parking />} />
-        <Route path='/setting' element={<Setting />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
-      <Footer />
     </>
   )
 }

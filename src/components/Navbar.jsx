@@ -1,21 +1,23 @@
-import '../assets/styles/Navbar.scss'
-import logo from '../assets/images/logo-1.svg'
-import hamburger from '../assets/images/navbar.svg'
-import close from '../assets/images/close.svg'
-import park from '../assets/images/park.svg'
-import setting from '../assets/images/setting.svg'
-
-import { Link, useMatch, useResolvedPath } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useState } from 'react'
 
-export default function Navbar() {
+import '../assets/styles/Navbar.scss'
+import logo from '../assets/images/logo-1.svg'
+import park from '../assets/images/park.svg'
+import setting from '../assets/images/setting.svg'
+import hamburger from '../assets/images/navbar.svg'
+import close from '../assets/images/close.svg'
+import more from '../assets/images/more.svg'
+import less from '../assets/images/less.svg'
+
+export default function TopNav() {
   const [isExpanded, setIsExpanded] = useState(false)
 
   return (
     <nav className='nav'>
       <div className='nav-container'>
-        <Link to='/'>
-          <img src={logo} alt='logo' className='nav-container_logo' />
+        <Link to='/' className='nav-container_logo'>
+          <img src={logo} alt='logo' />
         </Link>
         <button
           className='nav-container_hamburger'
@@ -29,30 +31,68 @@ export default function Navbar() {
             <img src={hamburger} alt='hamburger' />
           )}
         </button>
-
-        <ul className={isExpanded ? 'nav-container_list expanded' : 'nav-container_list'}>
-          <NavbarLink to='/parking'>
-            <img src={park} className='nav-container_item_img' alt='' />
-            <div className='nav-container_item_title'>停車</div>
-          </NavbarLink>
-          <NavbarLink to='/setting'>
-            <img src={setting} className='nav-container_item_img' alt='' />
-            <div className='nav-container_item_title'>設定</div>
-          </NavbarLink>
-        </ul>
+        <div
+          className={isExpanded ? 'nav-container_list expanded' : 'nav-container_list'}
+        >
+          <DropDown />
+        </div>
       </div>
     </nav>
   )
 }
 
-function NavbarLink({ to, children }) {
-  const resolvedPath = useResolvedPath(to)
-  const isActive = useMatch({ path: resolvedPath.pathname, end: true })
+export function DropDown() {
+  const [subNavExpanded, setSubNavExpanded] = useState(false)
   return (
-    <li className={`nav-container_item ${isActive ? 'active' : ''}`}>
-      <Link to={to} className='nav-container_item_link'>
-        {children}
-      </Link>
-    </li>
+    <>
+      {/* drop down btn */}
+      <button
+        className='nav-container_item'
+        onClick={() => setSubNavExpanded(!subNavExpanded)}
+      >
+        <img src={park} className='nav-container_item_img' />
+        <div className='nav-container_title'>停車</div>
+        {subNavExpanded ? (
+          <img src={less} className='nav-container_item_less' />
+        ) : (
+          <img src={more} className='nav-container_item_more' />
+        )}
+      </button>
+      {/* drop down content */}
+      <div className={subNavExpanded ? 'sub-nav expanded' : 'sub-nav'}>
+        <NavLink className='sub-nav_item' to='/quick-nav'>
+          快速導引
+        </NavLink>
+        <NavLink className='sub-nav_item' to='/parking'>
+          停車地圖
+        </NavLink>
+      </div>
+
+      {/* drop down btn */}
+      <button
+        className='nav-container_item'
+        onClick={() => setSubNavExpanded(!subNavExpanded)}
+      >
+        <img src={setting} className='nav-container_item_img' />
+        <div className='nav-container_title'>設定</div>
+        {subNavExpanded ? (
+          <img src={less} className='nav-container_item_less' />
+        ) : (
+          <img src={more} className='nav-container_item_more' />
+        )}
+      </button>
+      {/* drop down content */}
+      <div className={subNavExpanded ? 'sub-nav expanded' : 'sub-nav'}>
+        <NavLink className='sub-nav_item' to='/account'>
+          帳號
+        </NavLink>
+        <NavLink className='sub-nav_item' to='/map-style'>
+          地圖樣式
+        </NavLink>
+        <NavLink className='sub-nav_item' to='/about-us'>
+          關於我們
+        </NavLink>
+      </div>
+    </>
   )
 }

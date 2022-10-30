@@ -1,3 +1,5 @@
+import '../assets/styles/Parking.scss'
+
 export default function Parking() {
-  return <h1>Parking</h1>
+  return <div className='parking-container'>parking</div>
 }
