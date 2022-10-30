@@ -3,7 +3,14 @@
   height: 100vh;
 }
 
-.places-input {
+.places-container {
   width: 80%;
-  padding: 0.5rem;
+  margin: 0 auto;
+  background-color: transparent;
+
+  &_input {
+    padding: 0.3rem;
+    border-radius: 6px;
+    background-color: transparent;
+  }
 }

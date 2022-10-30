@@ -2,9 +2,8 @@ import '../assets/styles/Parking.scss'
 
 // useMemo memorize the result
 import { useMemo, useRef, useCallback } from 'react'
-
 import { useLoadScript, GoogleMap } from '@react-google-maps/api'
-
+import Places from '../components/Places'
 
 // useState
 // Marker, DirectionRenderer, Circle, MarkerCluster
@@ -45,13 +44,18 @@ function Map() {
 
   return (
     <div>
-      <GoogleMap
-        zoom={14}
-        center={center}
-        mapContainerClassName='map-container'
-        options={options}
-        onLoad={onLoad}
-      ></GoogleMap>
+      <div className="map">
+        <Places />
+        <GoogleMap
+          zoom={14}
+          center={center}
+          mapContainerClassName='map-container'
+          options={options}
+          onLoad={onLoad}
+        ></GoogleMap>
+
+      </div>
+      
     </div>
   )
 }
