@@ -14,9 +14,9 @@
   align-items: center;
   height: 50px;
   width: 100%;
+  padding: 0 1rem;
 
   &_logo {
-    margin-left: 1rem;
     padding-top: 5px;
     width: 105px;
   }
@@ -35,7 +35,6 @@
     display: flex;
     align-items: flex-end;
     width: 100%;
-    padding: 1rem;
     border-bottom: 1px solid var(--dark-20);
     color: var(--dark-100);
     font-size: 1rem;

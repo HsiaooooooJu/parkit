@@ -8,16 +8,7 @@ export default function Footer() {
         <Link to='/' className='footer-container_logo'>
           <img src={logo} />
         </Link>
-
-        <div className='footer-container_block'>
-          <ul className='footer-container_block_title'>我的</ul>
-          <FooterLink to='/favorite' className='footer-container_block_text'>
-            最愛清單
-          </FooterLink>
-          <FooterLink to='/memo' className='footer-container_block_text'>
-            備忘錄
-          </FooterLink>
-        </div>
+        
         <div className='footer-container_block'>
           <ul className='footer-container_block_title'>停車</ul>
           <FooterLink to='/quick-nav' className='footer-container_block_text'>
@@ -29,9 +20,6 @@ export default function Footer() {
         </div>
         <div className='footer-container_block'>
           <ul className='footer-container_block_title'>設定</ul>
-          <FooterLink to='/account' className='footer-container_block_text'>
-            帳號
-          </FooterLink>
           <FooterLink to='/map-style' className='footer-container_block_text'>
             地圖樣式
           </FooterLink>
