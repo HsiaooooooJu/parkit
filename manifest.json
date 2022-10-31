@@ -1,6 +1,6 @@
 {
-  "short_name": "Parkit",
-  "name": "Parking Kit",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "web-icon.svg",
@@ -8,13 +8,13 @@
       "type": "image/svg"
     },
     {
-      "src": "logo192.png",
-      "type": "image/png",
+      "src": "web-icon.svg",
+      "type": "image/svg",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
-      "type": "image/png",
+      "src": "web-icon.svg",
+      "type": "image/svg",
       "sizes": "512x512"
     }
   ],
