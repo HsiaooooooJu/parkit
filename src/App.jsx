@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import './App.scss'
 
 import Navbar from './components/Navbar'
@@ -22,7 +22,7 @@ function App() {
   }
 
   return (
-    <>
+    <HashRouter>
       <Routes>
         <Route path='/' element={<Navigate replace to='/parkit' />} />
         <Route path='/parkit' element={wrapAll(<Home />)} />
@@ -32,7 +32,7 @@ function App() {
         <Route path='/parking' element={<Parking />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
-    </>
+    </HashRouter>
   )
 }
 
