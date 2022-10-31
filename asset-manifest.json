@@ -8,8 +8,5 @@
     "main.1565a6e7.js.map": "/parkit/static/js/main.1565a6e7.js.map",
     "787.9c7d906c.chunk.js.map": "/parkit/static/js/787.9c7d906c.chunk.js.map"
   },
-  "entrypoints": [
-    "static/css/main.cf92b1b7.css",
-    "static/js/main.1565a6e7.js"
-  ]
+  "entrypoints": ["static/css/main.cf92b1b7.css", "static/js/main.1565a6e7.js"]
 }

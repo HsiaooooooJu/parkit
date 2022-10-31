@@ -1,2 +1,27 @@
-body,html{margin:0;padding:0}.a_container,.b_container{padding:100px}.a_container{background-color:#fffaf0}.a_container_title{color:#008b8b}*{box-sizing:border-box;font-family:sans-serif}a{color:#66cdaa;text-decoration:none}a:hover{color:pink}
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+.a_container,
+.b_container {
+  padding: 100px;
+}
+.a_container {
+  background-color: #fffaf0;
+}
+.a_container_title {
+  color: #008b8b;
+}
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+a {
+  color: #66cdaa;
+  text-decoration: none;
+}
+a:hover {
+  color: pink;
+}
 /*# sourceMappingURL=main.cf92b1b7.css.map*/
