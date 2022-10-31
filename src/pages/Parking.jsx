@@ -1,5 +1,5 @@
 import '../assets/styles/Parking.scss'
-import pinBlue from '../assets/images/pin-blue.svg'
+// import pinBlue from '../assets/images/pin-blue.svg'
 
 // useMemo memorize the result
 import { useMemo, useRef, useCallback, useState } from 'react'
@@ -7,13 +7,6 @@ import { useLoadScript, GoogleMap, Marker } from '@react-google-maps/api'
 import Places from '../components/Places'
 
 // DirectionRenderer, Circle, MarkerCluster
-
-// // eslint-disable-next-line no-undef
-// const LatLngLiteral = google.maps.LatLngLiteral
-// // eslint-disable-next-line no-undef
-// const DirectionResults = google.maps.DirectionResults
-// // eslint-disable-next-line no-undef
-// const MapOptions = google.maps.MapOptions
 
 export default function Parking() {
   const { isLoaded } = useLoadScript({
@@ -46,25 +39,23 @@ function Map() {
   const onLoad = useCallback((map) => (mapRef.current = map), [])
 
   return (
-    <div>
-      <div className='map'>
-        <Places
-          setParking={(position) => {
-            // update parking state and move map to the location
-            setParking(position)
-            mapRef.current.panto()
-          }}
-        />
-        <GoogleMap
-          zoom={14}
-          center={center}
-          mapContainerClassName='map-container'
-          options={options}
-          onLoad={onLoad}
-        >
-          {parking && <Marker position={parking} icon={pinBlue} />}
-        </GoogleMap>
-      </div>
+    <div className='map'>
+      <Places
+        setParking={(position) => {
+          // update parking state and move map to the location
+          setParking(position)
+          mapRef.current.panTo(position)
+        }}
+      />
+      <GoogleMap
+        zoom={14}
+        center={center}
+        mapContainerClassName='map-container'
+        options={options}
+        onLoad={onLoad}
+      >
+        {parking && <Marker position={parking} />}
+      </GoogleMap>
     </div>
   )
 }

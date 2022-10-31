@@ -1,16 +1,38 @@
 .map-container {
+  position: absolute;
+  top: 0;
   width: 100%;
   height: 100vh;
 }
 
 .places-container {
-  width: 80%;
-  margin: 0 auto;
-  background-color: transparent;
 
   &_input {
-    padding: 0.3rem;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: 50%;
+    height: 2.5rem;
+    padding: 0.5rem;
     border-radius: 6px;
-    background-color: transparent;
+    box-shadow: 0 1px 8px 3px rgba(90, 90, 90, 0.2);
+    background-color: var(--dark-0);
+  }
+
+  &_select {
+    position: absolute;
+    top: calc(5% + 2.5rem);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 11;
+    width: 50%;
+    margin-top: -5px;
+    padding: 12px 10px;
+    border: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    background-color: var(--dark-0);
   }
 }

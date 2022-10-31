@@ -1,13 +1,6 @@
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete'
 
-// , { getGeocode, getLatLng }
-
-// function setParking() {
-//   // eslint-disable-next-line no-undef
-//   return google.maps.LatLngLiteral
-// }
-
-export default function Places(setParking) {
+export default function Places({ setParking }) {
   const {
     ready,
     value,
@@ -18,33 +11,44 @@ export default function Places(setParking) {
 
   console.log({ status, data })
 
-  const handleSelect = async () => {
+  const handleSelect =
+  ({ value }) => () => {
+    // When user selects a place, we can replace the keyword without request data from API
+    // by setting the second parameter to "false"
     setValue(value, false)
     clearSuggestions()
-
-    const results = await getGeocode({ value })
-    const { lat, lng } = await getLatLng(results[0])
-    setParking({ lat, lng })
+    
+    console.log(value)
+    // Get latitude and longitude via utility functions
+    getGeocode({ address: value }).then((results) => {
+      const response = getLatLng(results[0])
+      console.log(response)
+      setParking({response})
+    })
   }
 
+  const renderSuggestions = () =>
+    data.map((suggestion) => {
+      const { place_id, description } = suggestion
+
+      return (
+        <li key={place_id} className='places-container_list' onClick={handleSelect(suggestion)}>
+          {description}
+        </li>
+      )
+    })
+
   return (
-    <div className='place-container' onSelect={handleSelect}>
-      {/* user input */}
+    <div>
       <input
         value={value}
+        className='places-container_input'
         onChange={(e) => setValue(e.target.value)}
         disabled={!ready}
-        className='places-container_input'
         placeholder='Search a parking space'
       />
-      <div className='places-container_select'>
-        <div className='places-container_select_list'>
-          {status === 'OK' &&
-            data.map(({ place_id, description }) => (
-              <li key={place_id}>{description}</li>
-            ))}
-        </div>
-      </div>
+      {/* We can use the "status" to decide whether we should display the dropdown or not */}
+      {status === 'OK' && <ul className='places-container_select'>{renderSuggestions()}</ul>}
     </div>
   )
 }
