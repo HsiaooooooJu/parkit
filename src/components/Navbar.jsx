@@ -31,6 +31,7 @@ export default function TopNav() {
           className={isExpanded ? 'nav-container_list expanded' : 'nav-container_list'}
         >
           <CustomLink to='/about-us'>關於我們</CustomLink>
+          <CustomLink to='/quick-nav'>快速導引</CustomLink>
           <CustomLink to='/parking'>停車地圖</CustomLink>
           <CustomLink to='/setting'>地圖樣式</CustomLink>
         </div>

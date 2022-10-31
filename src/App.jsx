@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Parking from './pages/Parking'
 import Setting from './pages/Setting'
 import About from './pages/About'
+import QuickNav from './pages/QuickNav'
 import NotFound from './pages/NotFound'
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path='/parkit' element={wrapAll(<Home />)} />
         <Route path='/setting' element={wrapAll(<Setting />)} />
         <Route path='/about-us' element={wrapAll(<About />)} />
+        <Route path='/quick-nav' element={wrapAll(<QuickNav />)} />
         <Route path='/parking' element={<Parking />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
