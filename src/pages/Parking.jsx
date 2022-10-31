@@ -107,12 +107,22 @@ import '../assets/styles/Parking.scss'
 // }
 
 import { useLoadScript } from '@react-google-maps/api'
+import Navbar from '../components/Navbar'
 import Map from '../components/Map'
 
-export default function App() {
+function LoadMap() {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
   })
 
   return isLoaded ? <Map /> : <div className='map-loading'>Loading...</div>
+}
+
+export default function Parking() {
+  return (
+    <>
+      <Navbar />
+      <LoadMap />
+    </>
+  )
 }
