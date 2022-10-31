@@ -1,0 +1,45 @@
+.about_container {
+  width: 100%;
+  margin: 60px auto 0 auto;
+  padding: 1rem;
+
+  &_title {
+    color: var(--blue-80);
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  &_content {
+    margin-bottom: 20px;
+    color: var(--dark-80);
+    line-height: 1.6;
+    font-size: 0.85rem;
+  }
+
+  &_wrapper {
+    display: flex;
+    margin-top: 10px;
+  }
+
+  &_box {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+
+    &_title, &_text {
+      color: var(--dark-80);
+      font-size: 0.85rem;
+    }
+
+    &_title {
+      font-weight: 500;
+    }
+
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .about_container {
+    max-width: 768px;
+  }
+}
