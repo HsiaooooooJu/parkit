@@ -36,3 +36,13 @@
     background-color: var(--dark-0);
   }
 }
+
+.map-loading {
+  width: 100%;
+  height: 100vh;
+  margin: 10% auto;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 300;
+  background-color: #EBE2CE;
+}
