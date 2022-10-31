@@ -1,0 +1,50 @@
+.setting-container {
+  width: 100%;
+  min-width: 300px;
+  margin: 60px auto 0 auto;
+  padding: 1rem;
+
+  &_title {
+    color: var(--blue-80);
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  &_text {
+    font-size: 0.85rem;
+  }
+
+  &_style {
+    display: flex;
+    justify-content: space-between;
+
+    &_box {
+      width: 48%;
+
+      &_img {
+        width: 100%;
+        min-width: 100px;
+        max-width: 220px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .setting-container {
+    max-width: 768px;
+
+    &_style {
+      justify-content: flex-start;
+
+      &_box {
+        width: 30%;
+        min-width: 240px;
+
+        &_img {
+          padding-right: 10px;
+        }
+      }
+    }
+  }
+}

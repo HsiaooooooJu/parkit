@@ -32,7 +32,7 @@ export default function TopNav() {
         >
           <CustomLink to='/about-us'>關於我們</CustomLink>
           <CustomLink to='/parking'>停車地圖</CustomLink>
-          <CustomLink to='/setting'>帳號設定</CustomLink>
+          <CustomLink to='/setting'>地圖樣式</CustomLink>
         </div>
       </div>
     </nav>
