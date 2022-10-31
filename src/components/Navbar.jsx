@@ -30,17 +30,25 @@ export default function TopNav() {
         <div
           className={isExpanded ? 'nav-container_list expanded' : 'nav-container_list'}
         >
-          <NavLink className='nav-container_item' to='/setting'>
-            <div className='nav-container_title'>系統設定</div>
-          </NavLink>
-          <NavLink className='nav-container_item' to='/parking'>
-            <div className='nav-container_title'>停車地圖</div>
-          </NavLink>
-          <NavLink className='nav-container_item' to='/about-us'>
-            <div className='nav-container_title'>關於我們</div>
-          </NavLink>
+          <CustomLink to='/about-us'>關於我們</CustomLink>
+          <CustomLink to='/parking'>停車地圖</CustomLink>
+          <CustomLink to='/setting'>帳號設定</CustomLink>
         </div>
       </div>
     </nav>
+  )
+}
+
+function CustomLink({ to, children }) {
+  return (
+    <NavLink className='nav-container_item' to={to}>
+      <div
+        className={({ isActive }) =>
+          isActive ? 'active nav-container_title' : 'nav-container_title'
+        }
+      >
+        {children}
+      </div>
+    </NavLink>
   )
 }

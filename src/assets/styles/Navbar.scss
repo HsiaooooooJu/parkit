@@ -37,6 +37,7 @@
     width: 100%;
     padding: 1rem;
     border-bottom: 1px solid var(--dark-20);
+    color: var(--dark-100);
     font-size: 1rem;
     font-weight: 500;
   }
@@ -83,12 +84,15 @@
     &_list {
       all: unset;
       display: flex;
+      align-items: center;
       width: 50%;
       max-width: calc(768px / 2);
       height: 100%;
+      margin-right: 5px;
     }
 
     &_item {
+      justify-content: space-around;
       padding-right: 0;
       border: none;
     }
