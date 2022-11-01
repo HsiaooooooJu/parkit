@@ -1,0 +1,37 @@
+.leaflet-touch .leaflet-bar {
+	border: none;
+}
+
+.leaflet-bar a {
+	color: var(--blue-60);
+	border-bottom: 2px solid var(--dark-20);
+}
+
+.leaflet-left
+.leaflet-control {
+  margin-top: 70px;
+	margin-left: 20px;
+	box-shadow: 0 1px 8px 3px rgba(90, 90, 90, 0.1);
+}
+
+.leaflet-touch .leaflet-control-zoom-in, .leaflet-touch .leaflet-control-zoom-out {
+	position: relative;
+	padding: 22px;
+	font-size: 1.65rem;
+
+	span {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -55%);
+	}
+}
+
+.leaflet-touch .leaflet-bar a:first-child {
+	border-top-left-radius: 40%;
+	border-top-right-radius: 40%;
+	}
+.leaflet-touch .leaflet-bar a:last-child {
+	border-bottom-left-radius: 40%;
+	border-bottom-right-radius: 40%;
+	}

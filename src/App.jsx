@@ -24,8 +24,8 @@ function App() {
     <HashRouter>
       <Navbar />
       <Routes>
-        <Route path='/' element={<Navigate replace to='/parkit' />} />
-        <Route path='/parkit' element={wrapAll(<Home />)} />
+        <Route path='/' element={<Navigate replace to='/home' />} />
+        <Route path='/home' element={wrapAll(<Home />)} />
         <Route path='/setting' element={wrapAll(<Setting />)} />
         <Route path='/about-us' element={wrapAll(<About />)} />
         <Route path='/quick-nav' element={wrapAll(<QuickNav />)} />
