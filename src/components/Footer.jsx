@@ -9,7 +9,7 @@ export default function Footer() {
           <img src={logo} />
         </Link>
 
-        <div className="footer-container_wrap">
+        <div className='footer-container_wrap'>
           <div className='footer-container_block'>
             <ul className='footer-container_block_title'>停車</ul>
             <FooterLink to='/quick-nav' className='footer-container_block_text'>

@@ -27,7 +27,8 @@
     flex-direction: column;
     margin-right: 1rem;
 
-    &_title, &_text {
+    &_title,
+    &_text {
       color: var(--dark-80);
       font-size: 0.85rem;
     }
@@ -35,7 +36,6 @@
     &_title {
       font-weight: 500;
     }
-
   }
 }
 
