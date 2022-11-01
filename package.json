@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "gh-pages": "^4.0.0",
+    "json-server": "^0.17.0",
     "leaflet": "^1.9.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -24,7 +25,8 @@
     "eject": "react-scripts eject",
     "format": "prettier --write .",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "server": "json-server --watch db.json --port 8080"
   },
   "eslintConfig": {
     "extends": [

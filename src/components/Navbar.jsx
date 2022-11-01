@@ -6,7 +6,7 @@ import logo from '../assets/images/logo-1.svg'
 import hamburger from '../assets/images/navbar.svg'
 import close from '../assets/images/close.svg'
 
-export default function TopNav() {
+export default function Navbar() {
   const [isExpanded, setIsExpanded] = useState(false)
 
   return (
