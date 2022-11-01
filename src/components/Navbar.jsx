@@ -39,3 +39,18 @@ export default function TopNav() {
     </nav>
   )
 }
+
+function CustomLink({ to, children }) {
+  return (
+    <div className='nav-container_item'>
+      <NavLink
+        to={to}
+        className={({ isActive }) =>
+          isActive ? 'active nav-container_title' : 'nav-container_title'
+        }
+      >
+        {children}
+      </NavLink>
+    </div>
+  )
+}

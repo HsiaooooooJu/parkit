@@ -14,7 +14,6 @@ function App() {
   const wrapAll = (children) => {
     return (
       <>
-        <Navbar />
         {children}
         <Footer />
       </>
@@ -23,6 +22,7 @@ function App() {
 
   return (
     <HashRouter>
+      <Navbar />
       <Routes>
         <Route path='/' element={<Navigate replace to='/parkit' />} />
         <Route path='/parkit' element={wrapAll(<Home />)} />
