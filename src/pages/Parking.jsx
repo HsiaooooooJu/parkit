@@ -1,10 +1,13 @@
 import '../assets/styles/Parking.scss'
 import '../assets/styles/Leaflet.scss'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import parkData from '../data/park.json'
+import { DivIcon } from 'leaflet'
 import { converter } from '../utils/Converter'
-// import { Icon } from 'leaflet'
-// import pinBlue from '../assets/images/pin-blue.svg'
+import parkData from '../data/park.json'
+import PopupContent from '../components/PopupContent'
+import LocationMarker from '../components/LocationMarker'
+
+import bluePin from '../assets/images/pin-blue.svg'
 
 export default function Parking() {
   // 得到停車場 id
@@ -51,28 +54,25 @@ export default function Parking() {
     <div id='map'>
       <MapContainer center={[25.0504753, 121.545543]} zoom={14} scrollWheelZoom={false}>
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+          attribution='<a href="https://stadiamaps.com/">&copy; Stadia Maps</a><a href="https://openmaptiles.org/">&copy; OpenMapTiles</a><a href="http://openstreetmap.org">&copy; OpenStreetMap</a>'
+          url='https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png'
         />
         {parkInfo.map((park) => (
-<<<<<<< HEAD
-          <Marker key={park.id} position={park.position}>
-            <Popup>{park.name}</Popup>
-=======
           <Marker key={park.id} position={park.code}>
             <Popup>
               <div className='popup-container'>
                 <div className='popup-container_title'>{park.name}</div>
               </div>
             </Popup>
->>>>>>> 4586ee2 (feat: add marker)
           </Marker>
         ))}
+        <LocationMarker>
+          <Popup>You are here</Popup>
+        </LocationMarker>
       </MapContainer>
     </div>
   )
 }
-<<<<<<< HEAD
 
 function handleData() {
   const park = parkData.data.park
@@ -100,5 +100,3 @@ function handleData() {
   })
   return parkInfo
 }
-=======
->>>>>>> 4586ee2 (feat: add marker)
