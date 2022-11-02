@@ -1,5 +1,4 @@
-import { Marker } from 'react-leaflet'
-import { useMapEvents } from 'react-leaflet'
+import { Marker, useMapEvents } from 'react-leaflet'
 import { useState } from 'react'
 import { Icon } from 'leaflet'
 

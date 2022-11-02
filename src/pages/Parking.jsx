@@ -1,13 +1,17 @@
 import '../assets/styles/Parking.scss'
 import '../assets/styles/Leaflet.scss'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import { DivIcon } from 'leaflet'
+
+import { MapContainer, TileLayer, ZoomControl, Marker, Popup } from 'react-leaflet'
+
+import osm from '../utils/OsmProvider'
 import { converter } from '../utils/Converter'
 import parkData from '../data/park.json'
+
 import PopupContent from '../components/PopupContent'
 import LocationMarker from '../components/LocationMarker'
 
-import bluePin from '../assets/images/pin-blue.svg'
+// import bluePin from '../assets/images/pin-blue.svg'
+import locationIcon from '../assets/images/location.svg'
 
 export default function Parking() {
   // 得到停車場 id
@@ -52,13 +56,23 @@ export default function Parking() {
 
   return (
     <div id='map'>
-      <MapContainer center={[25.0504753, 121.545543]} zoom={14} scrollWheelZoom={false}>
-        <TileLayer
-          attribution='<a href="https://stadiamaps.com/">&copy; Stadia Maps</a><a href="https://openmaptiles.org/">&copy; OpenMapTiles</a><a href="http://openstreetmap.org">&copy; OpenStreetMap</a>'
-          url='https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png'
-        />
+      <MapContainer
+        center={[25.0504753, 121.545543]}
+        zoom={14}
+        zoomControl={false}
+        scrollWheelZoom={false}
+      >
+        <button className='map-container_locate'>
+          <img src={locationIcon} />
+        </button>
+        <ZoomControl position='bottomleft' />
+        <TileLayer attribution={osm.maptile.attribution} url={osm.maptile.url} />
         {parkInfo.map((park) => (
-          <Marker key={park.id} position={park.code}>
+          <Marker
+            key={park.id}
+            position={park.position}
+            icon={stall}
+          >
             <Popup>
               <div className='popup-container'>
                 <div className='popup-container_title'>{park.name}</div>
@@ -100,3 +114,21 @@ function handleData() {
   })
   return parkInfo
 }
+
+import L from 'leaflet'
+import parkStall from '../assets/images/park-stall.svg'
+import markerShadow from 'leaflet/dist/images/marker-shadow.png'
+
+delete L.Icon.Default.prototype._getIconUrl
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+})
+
+const stall = new L.Icon({
+  iconUrl: parkStall,
+  iconSize: [45, 45],
+  shadowUrl: markerShadow,
+  shadowAnchor: [14, 18]
+})
