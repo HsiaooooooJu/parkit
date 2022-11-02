@@ -2,3 +2,49 @@
   width: 100%;
   height: 100vh;
 }
+
+.popup {
+  min-width: 220px;
+  
+  > a {
+    color: var(--blue-80);
+  }
+
+  &_title {
+    padding-bottom: 5px;
+    font-size: 0.9rem;
+  }
+
+  &_sub {
+    display: flex;
+    
+    &_box {
+      margin-right: 25px;
+
+      &_title {
+        margin-right: 5px;
+        font-size: 0.75rem;
+        font-weight: 500;
+      }
+
+      &_num {
+        color: var(--blue-60);
+        letter-spacing: 1px;
+      }
+    }
+  }
+}
+
+.leaflet-div-icon.leaflet-marker-icon {
+  border: none;
+
+  > div {
+    width: 25px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .popup {
+    max-width: 320px;
+  }
+}
