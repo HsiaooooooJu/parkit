@@ -1,1 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 63.64 126.12"><defs><style>.cls-1{fill:#005869;}</style></defs><g id="UI_Design" data-name="UI Design"><path class="cls-1" d="M56.77,12.91V7.45H51.31V2H13V7.45H7.58v5.46H2.12V51.18H7.58v5.46H13V62.1H27.37V123H35V62.1H51.31V56.64h5.46V51.18h5.46V12.91ZM51.31,51.18H13V12.91H51.31Z"/><path class="cls-1" d="M30.42,40.61H40.63l3.92-4.06V22.39l-3.92-4.1H20.14V46.1H30.42Zm0-13.87h3.49V32.1H30.42Z"/></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 63.6 126.1" style="enable-background:new 0 0 63.6 126.1;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+	.st1{fill:#005869;}
+</style>
+<g id="UI_Design">
+	<rect x="11.4" y="11.4" class="st0" width="41.4" height="41.4"/>
+	<path class="st1" d="M56.8,12.9V7.4h-5.5V2H13v5.4H7.6v5.5H2.1v38.3h5.5v5.5H13v5.5h14.4V123H35V62.1h16.3v-5.5h5.5v-5.5h5.5V12.9
+		H56.8z M51.3,51.2H13V12.9h38.3V51.2z"/>
+	<path class="st1" d="M30.4,40.6h10.2l3.9-4.1V22.4l-3.9-4.1H20.1v27.8h10.3V40.6z M30.4,26.7h3.5v5.4h-3.5V26.7z"/>
+</g>
+</svg>

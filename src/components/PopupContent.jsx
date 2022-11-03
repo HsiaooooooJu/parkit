@@ -2,8 +2,6 @@ import { Link } from 'react-router-dom'
 // import parkData from '../data/park.json'
 
 export default function PopupContent() {
-  // const park = parkData.data.park
-
   return (
     <div className='popup'>
       <Link to='/quick-nav' className='popup_title'>
@@ -22,3 +20,21 @@ export default function PopupContent() {
     </div>
   )
 }
+
+// const park = parkData.data.park
+
+// function getFare() {
+//   // 取得最高的費用
+//   const fareWorkingDay = park.map((p) => {
+//     return p.FareInfo.WorkingDay
+//   })
+//   console.log('fareWorkingDay', fareWorkingDay)
+
+//   // const info = park[0].FareInfo.WorkingDay[0].Fare
+
+//   const fare = park[0].FareInfo.WorkingDay.map( item => {
+//     return item.Fare
+//   })
+//   const maxFare = Math.max(...fare)
+//   console.log('maxFare', maxFare)
+// }

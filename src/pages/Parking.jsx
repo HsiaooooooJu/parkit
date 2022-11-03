@@ -1,31 +1,14 @@
-import L from 'leaflet'
-import { MapContainer, TileLayer, ZoomControl, Marker, Popup } from 'react-leaflet'
-
-import parkData from '../data/park.json'
+import { stall } from '../components/Icons'
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import osm from '../utils/OsmProvider'
+import parkData from '../data/park.json'
 import handleData from '../utils/HandleData'
 
 import PopupContent from '../components/PopupContent'
 import LocationMarker from '../components/LocationMarker'
 
-import parkStall from '../assets/images/park-stall.svg'
-import locationIcon from '../assets/images/location.svg'
-import markerShadow from 'leaflet/dist/images/marker-shadow.png'
+import Button from '../components/Button'
 
-delete L.Icon.Default.prototype._getIconUrl
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
-})
-
-const stall = new L.Icon({
-  iconUrl: parkStall,
-  iconSize: [45, 50],
-  shadowUrl: markerShadow,
-  shadowAnchor: [13, 16],
-  popupAnchor: [0, -24]
-})
 
 export default function Parking() {
   // 得到停車場 id
@@ -70,17 +53,13 @@ export default function Parking() {
 
   return (
     <div id='map'>
-      <MapContainer
-        center={[25.0504753, 121.545543]}
-        zoom={14}
-        zoomControl={false}
-        scrollWheelZoom={false}
-      >
-        <button className='map-container_locate'>
-          <img src={locationIcon} />
-        </button>
-        <ZoomControl position='bottomleft' />
+      <MapContainer center={[25.0504753, 121.545543]} zoom={14} scrollWheelZoom={false}>
+        <Button />
+
         <TileLayer attribution={osm.maptile.attribution} url={osm.maptile.url} />
+
+        <GetMapCenter />
+
         {parkInfo.map((park) => (
           <Marker key={park.id} position={park.position} icon={stall}>
             <Popup>
@@ -90,6 +69,7 @@ export default function Parking() {
             </Popup>
           </Marker>
         ))}
+        {/* <Marker position={position}></Marker> */}
         <LocationMarker>
           <Popup>You are here</Popup>
         </LocationMarker>
@@ -97,3 +77,48 @@ export default function Parking() {
     </div>
   )
 }
+
+// function GetMapCenter() {
+//   const map = useMap()
+//   // 得到兩點的距離
+//   // const dist = map.distance([25.0504753, 121.545543], [25.04754574, 121.5716298])
+//   console.log()
+//   console.log('map center:', map.getCenter())
+//   return null
+// }
+
+// import { getParkingLots } from '../apis/ParkingAPI'
+// import { useState, useEffect } from 'react'
+
+// async function parkingLots() {
+//   try {
+//     const { data } = await getParkingLots()
+//     console.log(data)
+//   } catch (error) {
+//     alert('無法取得資料，請稍後再試')
+//   }
+// }
+
+// export function ParkingLotsData() {
+//   const [parkingLots, setParkingLots] = useState(null)
+//   useEffect(() => {
+//     async function startFetching() => {
+//       const response = await getParkingLots()
+//       setParkingLots(response)
+//     }
+//   }, [])
+// }
+
+// export function ParkingLotsData() {
+//   const [parkingLots, setParkingLots] = useState(null)
+
+//   async function fetchData() {
+//     const response = await getParkingLots()
+//     setParkingLots(response.data)
+//     console.log(response.data)
+//   }
+
+//   useEffect(() => {
+//     fetchData()
+//   })
+// }

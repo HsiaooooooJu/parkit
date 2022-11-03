@@ -1,9 +1,9 @@
 import { converter } from '../utils/Converter'
 import parkData from '../data/park.json'
 
-export default function handleData() {
-  const park = parkData.data.park
+const park = parkData.data.park
 
+export default function handleData() {
   const parkId = park.map((p) => {
     return p.id
   })
@@ -28,3 +28,7 @@ export default function handleData() {
   })
   return parkInfo
 }
+
+// const {id, area, name, summary, address, tel, payex, serviceTime, tw97x, tw97y, totalcar, totalmotor, totalbike, FareInfo: {...FareInfo}} = parking
+
+// const {lat, lng} = converter(park.tw97x, park.tw97y)
