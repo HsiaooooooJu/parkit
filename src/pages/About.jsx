@@ -3,10 +3,10 @@ export default function About() {
     <div className='about_container'>
       <div className='about_container_title'>關於我們</div>
       <p className='about_container_content'>
-        Parkit 不僅是 <strong>Park it</strong> 還是 <strong>Park it</strong>
+        Parkit 不僅是 <strong>Park kit</strong> 還是 <strong>Park it</strong>
         ，希望能藉由這個 Web App 方便使用者找到停車位。
         <br />
-        祝使用愉快，永遠有空位可以停 ：）
+        祝使用愉快，永遠有大大的空車位 ：）
       </p>
       <div className='about_container_title'>聯絡我們</div>
       <div className='about_container_wrapper'>
