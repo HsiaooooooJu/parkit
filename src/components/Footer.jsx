@@ -17,7 +17,7 @@ export default function Footer() {
           </div>
           <div className='footer-container_block'>
             <ul className='footer-container_block_title'>設定</ul>
-            <FooterLink to='/map-style'>地圖樣式</FooterLink>
+            <FooterLink to='/setting'>地圖樣式</FooterLink>
             <FooterLink to='/about-us'>關於我們</FooterLink>
           </div>
         </div>

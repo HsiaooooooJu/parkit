@@ -1,4 +1,3 @@
-import '../assets/styles/Setting.scss'
 import retro from '../assets/images/retro.png'
 import silver from '../assets/images/silver.png'
 

@@ -1,5 +1,4 @@
 import main from '../assets/images/main.svg'
-import '../assets/styles/Home.scss'
 
 export default function Home() {
   return (

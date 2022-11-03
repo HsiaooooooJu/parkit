@@ -1,4 +1,3 @@
-import '../assets/styles/Parking.scss'
 import { Link } from 'react-router-dom'
 // import parkData from '../data/park.json'
 

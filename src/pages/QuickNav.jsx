@@ -1,5 +1,3 @@
-import '../assets/styles/QuickNav.scss'
-
 export default function QuickNav() {
   return (
     <div className='quick-container'>
