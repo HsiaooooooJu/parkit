@@ -1,6 +1,5 @@
 import { Marker, useMapEvents } from 'react-leaflet'
 import { useState } from 'react'
-// import geolib from 'geolib'
 
 import { orange } from '../components/Icons'
 
