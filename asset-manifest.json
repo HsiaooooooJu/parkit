@@ -1,23 +1,24 @@
 {
   "files": {
-    "main.css": "/parkit/static/css/main.fd1bb163.css",
-    "main.js": "/parkit/static/js/main.6f8a0051.js",
+    "main.css": "/parkit/static/css/main.b915e80e.css",
+    "main.js": "/parkit/static/js/main.a080d735.js",
     "static/media/retro.png": "/parkit/static/media/retro.b1f8e483da7e1641d0e8.png",
     "static/media/silver.png": "/parkit/static/media/silver.8d96ffd194311b849567.png",
     "static/media/main.svg": "/parkit/static/media/main.5b0d59c9c6ab94bdd3873e28b4f499e2.svg",
     "static/media/logo-1.svg": "/parkit/static/media/logo-1.fe579da6d83c35d0fc6b3666f0480836.svg",
     "static/media/logo-2.svg": "/parkit/static/media/logo-2.71d47bc22989ef22070389567352a77d.svg",
     "index.html": "/parkit/index.html",
+    "static/media/park-stall.svg": "/parkit/static/media/park-stall.dbc0fd639f5b4072631cc89d7145c799.svg",
+    "static/media/pin-orange.svg": "/parkit/static/media/pin-orange.4f01360c6c0fb1a3bd4c8a0893aee486.svg",
     "static/media/location.svg": "/parkit/static/media/location.07e7003447cbad70d5adabe31305c270.svg",
     "static/media/close.svg": "/parkit/static/media/close.a2b66d59e24576e22729700304353e40.svg",
-    "static/media/park-stall.svg": "/parkit/static/media/park-stall.00f11e4dda98a5d3d2947a60ceeb12f6.svg",
-    "static/media/pin-orange.svg": "/parkit/static/media/pin-orange.1cf54187f02af14fe0ddd675375dc2fe.svg",
+    "static/media/pinYellow.svg": "/parkit/static/media/pinYellow.743f8df1317dd9e30978aee950c105e0.svg",
     "static/media/navbar.svg": "/parkit/static/media/navbar.4bac4cf3120ce46741129e42a9aebdb1.svg",
-    "main.fd1bb163.css.map": "/parkit/static/css/main.fd1bb163.css.map",
-    "main.6f8a0051.js.map": "/parkit/static/js/main.6f8a0051.js.map"
+    "main.b915e80e.css.map": "/parkit/static/css/main.b915e80e.css.map",
+    "main.a080d735.js.map": "/parkit/static/js/main.a080d735.js.map"
   },
   "entrypoints": [
-    "static/css/main.fd1bb163.css",
-    "static/js/main.6f8a0051.js"
+    "static/css/main.b915e80e.css",
+    "static/js/main.a080d735.js"
   ]
 }
