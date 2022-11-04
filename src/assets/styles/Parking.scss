@@ -1,5 +1,5 @@
 .popup {
-  min-width: 220px;
+  min-width: 240px;
   
   > a {
     color: var(--blue-80);
@@ -14,7 +14,7 @@
     display: flex;
     
     &_box {
-      margin-right: 25px;
+      margin-right: 20px;
 
       &_title {
         margin-right: 5px;
@@ -25,6 +25,12 @@
       &_num {
         color: var(--blue-60);
         letter-spacing: 1px;
+      }
+
+      &_price {
+        color: var(--blue-60);
+        font-size: 0.85rem;
+        font-weight: 700;
       }
     }
   }

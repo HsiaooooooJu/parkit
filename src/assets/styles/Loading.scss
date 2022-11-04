@@ -1,0 +1,55 @@
+.loading {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--blue-40);
+
+  &_text {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%);
+    color: var(--dark-0);
+    font-size: 36px;
+    font-weight: 500;
+    letter-spacing: 8px;
+  }
+
+  &_rec {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: 9rem;
+    background-color: var(--blue-80);
+  }
+  
+  &_img {
+    position: absolute;
+    bottom: 8.5rem;
+    right: 20%;
+    width: 4rem;
+  }
+}
+
+.loading_text {
+  perspective: 1000px;
+  span {
+    display: inline-block;
+    transform-origin: 50% 50% -25px;
+    transform-style: preserve-3d;
+    animation: loading .8s infinite;
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i+1}) {
+        animation-delay: #{$i*.1}s;
+      }
+    }
+  }
+}
+@keyframes loading {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
