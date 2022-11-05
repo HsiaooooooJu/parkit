@@ -1,7 +1,7 @@
 import { Marker, useMapEvents } from 'react-leaflet'
 import { useState } from 'react'
 
-import { orange } from '../components/Icons'
+import { locate } from '../components/Icons'
 
 export default function LocationMarker({ children }) {
   const [position, setPosition] = useState(null)
@@ -16,7 +16,7 @@ export default function LocationMarker({ children }) {
   })
 
   return position === null ? null : (
-    <Marker position={position} icon={orange}>
+    <Marker position={position} icon={locate}>
       {children}
     </Marker>
   )

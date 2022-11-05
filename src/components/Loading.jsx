@@ -1,4 +1,4 @@
-import stall from '../assets/images/park-stall.svg'
+import greenPin from '../assets/images/green-pin.svg'
 
 export default function Loading() {
   return (
@@ -13,7 +13,7 @@ export default function Loading() {
         <span>g</span>
       </p>
       <div className='loading_rec'></div>
-      <img className='loading_img' src={stall} alt='park-stall' />
+      <img className='loading_img' src={greenPin} alt='greenPin' />
     </div>
   )
 }

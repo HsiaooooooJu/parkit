@@ -1,5 +1,5 @@
 // import iconBlue from '../assets/images/pinBlue.svg'
-import iconYellow from '../assets/images/pinYellow.svg'
+import iconYellow from '../assets/images/gray-pin.svg'
 
 export default function QuickNav() {
   return (
