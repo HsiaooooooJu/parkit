@@ -8,6 +8,8 @@ import close from '../assets/images/close.svg'
 
 export default function Navbar() {
   const [isExpanded, setIsExpanded] = useState(false)
+  const toggle = () => setIsExpanded(!isExpanded)
+  const blur = () => setIsExpanded(false)
 
   return (
     <nav className='nav'>
@@ -15,36 +17,42 @@ export default function Navbar() {
         <Link to='/' className='nav-container_logo'>
           <img src={logo} alt='logo' />
         </Link>
-        <button
-          className='nav-container_hamburger'
-          onClick={() => {
-            setIsExpanded(!isExpanded)
-          }}
-        >
+        <button className='nav-container_hamburger' onClick={toggle}>
           {isExpanded ? (
             <img src={close} alt='close' />
           ) : (
             <img src={hamburger} alt='hamburger' />
           )}
         </button>
-        <div
-          className={isExpanded ? 'nav-container_list expanded' : 'nav-container_list'}
-        >
-          <CustomLink to='/about-us'>關於我們</CustomLink>
-          <CustomLink to='/quick-nav'>快速導引</CustomLink>
-          <CustomLink to='/parking'>停車地圖</CustomLink>
-          <CustomLink to='/setting'>地圖樣式</CustomLink>
+        <div className={isExpanded ? 'nav-container_backdrop expanded' : ''} onClick={blur}>
+          <div
+            className={isExpanded ? 'nav-container_list expanded' : 'nav-container_list'}
+          >
+            <CustomLink to='/about-us' onClick={toggle}>
+              關於我們
+            </CustomLink>
+            <CustomLink to='/quick-nav' onClick={toggle}>
+              快速導引
+            </CustomLink>
+            <CustomLink to='/parking' onClick={toggle}>
+              停車地圖
+            </CustomLink>
+            <CustomLink to='/setting' onClick={toggle}>
+              地圖樣式
+            </CustomLink>
+          </div>
         </div>
       </div>
     </nav>
   )
 }
 
-function CustomLink({ to, children }) {
+function CustomLink({ to, onClick, children }) {
   return (
     <div className='nav-container_item'>
       <NavLink
         to={to}
+        onClick={onClick}
         className={({ isActive }) =>
           isActive ? 'active nav-container_title' : 'nav-container_title'
         }

@@ -21,9 +21,23 @@
     width: 105px;
   }
 
+  &_backdrop {
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    display: none;
+  }
+
   &_list {
     position: absolute;
-    top: 50px;
+    top: 0;
     left: 0;
     display: none;
     width: 100%;
