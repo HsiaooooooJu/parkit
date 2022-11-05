@@ -1,6 +1,8 @@
 import { stall } from '../components/Icons'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { useState, useEffect, useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import { converter } from '../utils/Converter'
 import osm from '../utils/OsmProvider'
 import PopupContent from '../components/PopupContent'
@@ -11,7 +13,6 @@ import Loading from '../components/Loading'
 
 
 export default function Parking() {
-<<<<<<< HEAD
   // 得到停車場 id
   const parkId = parkData.data.park.map((p) => {
     return p.id
@@ -51,10 +52,12 @@ export default function Parking() {
   const parkInfo = parkId.map((value, index) => {
     return { id: value, code: code[index], name: parkName[index] }
   })
-=======
+
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
   const [allPark, setAllPark] = useState([])
+  const [parkRemaining, setParkRemaining] = useState([])
+  const navigate = useNavigate()
 
   const fetchAllPark = useCallback(async () => {
     setIsLoading(true)
@@ -81,7 +84,6 @@ export default function Parking() {
           fareHoliday: item.FareInfo.Holiday
         }
       })
-
       setAllPark(park)
     } catch (error) {
       setError(error.message)
@@ -95,15 +97,42 @@ export default function Parking() {
     fetchAllPark()
   }, [fetchAllPark])
 
+  // fetch parking lots' vacancy data
+  const fetchParkRemaining = useCallback(async () => {
+    setIsLoading(true)
+    setError(null)
+    try {
+      const response = await fetch(
+        'https://tcgbusfs.blob.core.windows.net/blobtcmsv/TCMSV_allavailable.json'
+      )
+
+      if (!response.ok) {
+        throw new Error('發生錯誤')
+      }
+      const { data } = await response.json()
+      const changeRemaining = data.park.slice(20, 30)
+
+      setParkRemaining(changeRemaining)
+    } catch (error) {
+      setError(error.message)
+      console.log(error)
+    }
+    setIsLoading(false)
+  }, [])
+
+  
+  useEffect(() => {
+    fetchParkRemaining()
+  }, [fetchParkRemaining])
+
   if (isLoading) {
     return <Loading />
   }
 
   if (error) {
-    return <p className='quick-container_content'>{error}</p>
+    alert(error)
+    return navigate('/')
   }
-  console.log(allPark)
->>>>>>> 6dd15ea (feat: fetch API)
 
   return (
     <div id='map'>
@@ -119,7 +148,7 @@ export default function Parking() {
             icon={stall}
           >
             <Popup>
-              <PopupContent key={item.id} name={item.name} />
+              <PopupContent key={item.id} name={item.name}  />
             </Popup>
           </Marker>
         ))}

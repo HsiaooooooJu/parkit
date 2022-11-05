@@ -16,6 +16,6 @@ export const orange = new L.Icon({
   iconUrl: orangePin,
   iconSize: [40, 40],
   shadowUrl: markerShadow,
-  shadowAnchor: [13, 16],
+  shadowAnchor: [13, 18],
   popupAnchor: [0, -20]
 })
