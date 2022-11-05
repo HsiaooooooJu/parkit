@@ -1,66 +1,24 @@
-import { stall } from '../components/Icons'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { MapContainer, TileLayer, Popup } from 'react-leaflet'
 import { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { converter } from '../utils/Converter'
 import osm from '../utils/OsmProvider'
-import PopupContent from '../components/PopupContent'
 import LocationMarker from '../components/LocationMarker'
 
 import Button from '../components/Button'
 import Loading from '../components/Loading'
+import AllMarker from '../components/AllMarker'
 
 
 export default function Parking() {
-  // 得到停車場 id
-  const parkId = parkData.data.park.map((p) => {
-    return p.id
-  })
-
-  const parkName = parkData.data.park.map((p) => {
-    return p.name
-  })
-
-  // console.log(parkName)
-
-  // 得到停車場的座標，陣列資料
-  let showCoord = parkData.data.park.map((p) => {
-    return p.EntranceCoord.EntrancecoordInfo
-  })
-
-  // showCoord = showCoord.filter((item) => {
-  //   return item !== undefined
-  // })
-  console.log(showCoord)
-
-  // 僅保留一個停車場的座標
-  const coordInfo = showCoord.map((value) => {
-    if (value.length > 1) {
-      value.splice(1, value.length - 1)
-    }
-    return value
-  })
-
-  // 處理無資料、停車場座標的型別
-  const code = coordInfo.map((value) => {
-    if (!value) return
-    return [Number(value[0].Xcod), Number(value[0].Ycod)]
-  })
-
-  // 把兩筆陣列資料彙整方便 map <Marker />
-  const parkInfo = parkId.map((value, index) => {
-    return { id: value, code: code[index], name: parkName[index] }
-  })
-
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
   const [allPark, setAllPark] = useState([])
   const [parkRemaining, setParkRemaining] = useState([])
   const navigate = useNavigate()
 
   const fetchAllPark = useCallback(async () => {
-    setIsLoading(true)
     setError(null)
     try {
       const response = await fetch(
@@ -80,7 +38,7 @@ export default function Parking() {
           serviceTime: item.serviceTime,
           totalCar: item.totalcar,
           totalMotor: item.totalmotor,
-          fareWork: item.FareInfo.WorkingDay,
+          fareWorkday: item.FareInfo.WorkingDay,
           fareHoliday: item.FareInfo.Holiday
         }
       })
@@ -91,15 +49,16 @@ export default function Parking() {
     setIsLoading(false)
   }, [])
 
-  // prevent infinite loop from useState
-  // (which will update when content change)
+  // To immediately fetch data when user enter this page
+  // whenever fetchAllPark changes it will execute
+  // which may cause infinite loop
+  // add useCallback above to prevent
   useEffect(() => {
     fetchAllPark()
   }, [fetchAllPark])
 
   // fetch parking lots' vacancy data
   const fetchParkRemaining = useCallback(async () => {
-    setIsLoading(true)
     setError(null)
     try {
       const response = await fetch(
@@ -110,53 +69,62 @@ export default function Parking() {
         throw new Error('發生錯誤')
       }
       const { data } = await response.json()
-      const changeRemaining = data.park.slice(20, 30)
+      const changeRemaining = data.park.slice(20, 30).map((item) => {
+        return {
+          id: item.id,
+          availableCar: item.availablecar > 0 ? item.availablecar : 0,
+          availableMotor: item.availablemotor > 0 ? item.availablemotor : 0,
+          availableChargeStation: item.ChargeStation
+            ? item.ChargeStation.scoketStatusList.length
+            : '未提供充電站'
+        }
+      })
 
       setParkRemaining(changeRemaining)
     } catch (error) {
       setError(error.message)
-      console.log(error)
     }
     setIsLoading(false)
   }, [])
 
-  
+  // useEffect should not pass a Promise
   useEffect(() => {
     fetchParkRemaining()
   }, [fetchParkRemaining])
 
-  if (isLoading) {
-    return <Loading />
-  }
+  let content
 
   if (error) {
     alert(error)
     return navigate('/')
   }
 
+  if (isLoading && !allPark.length && !parkRemaining.length) {
+    content = <Loading />
+  }
+
+  if (!isLoading && allPark.length > 0 && parkRemaining.length > 0) {
+    const allParkRemaining = parkRemaining.map(item => {
+      const all = allPark.find( i => i.id === item.id)
+      return {
+        ...item,
+        ...all
+      }
+    })
+    content = <AllMarker allParkRemaining={allParkRemaining}></AllMarker>
+  }
+
   return (
-    <div id='map'>
-      <MapContainer center={[25.0504753, 121.545543]} zoom={14} scrollWheelZoom={false}>
-        <Button />
+    <MapContainer center={[25.0504753, 121.545543]} zoom={14} scrollWheelZoom={false}>
+      <Button />
 
-        <TileLayer attribution={osm.maptile.attribution} url={osm.maptile.url} />
+      <TileLayer attribution={osm.maptile.attribution} url={osm.maptile.url} />
 
-        {allPark.map((item) => (
-          <Marker
-            key={item.id}
-            position={[item.latlng.lat, item.latlng.lng]}
-            icon={stall}
-          >
-            <Popup>
-              <PopupContent key={item.id} name={item.name}  />
-            </Popup>
-          </Marker>
-        ))}
+      {content}
 
-        <LocationMarker>
-          <Popup>You are here</Popup>
-        </LocationMarker>
-      </MapContainer>
-    </div>
+      <LocationMarker>
+        <Popup>You are here</Popup>
+      </LocationMarker>
+    </MapContainer>
   )
 }
