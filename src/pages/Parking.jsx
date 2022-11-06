@@ -1,17 +1,23 @@
-import { MapContainer, TileLayer, Popup } from 'react-leaflet'
+import { MapContainer, TileLayer, LayersControl, ZoomControl } from 'react-leaflet'
 import { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { converter } from '../utils/Converter'
 import osm from '../utils/OsmProvider'
-import LocationMarker from '../components/LocationMarker'
-
-import Button from '../components/Button'
+// import LocationMarker from '../components/LocationMarker'
+import LocateBtn from '../components/LocateBtn'
 import Loading from '../components/Loading'
 import AllMarker from '../components/AllMarker'
 
+const { BaseLayer } = LayersControl
 
 export default function Parking() {
+  const [center, setCenter] = useState({
+    lat: 25.0504753,
+    lng: 121.545543
+  })
+
+  console.log(setCenter)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
   const [allPark, setAllPark] = useState([])
@@ -71,7 +77,7 @@ export default function Parking() {
       const changeRemaining = data.park.slice(20, 30).map((item) => {
         return {
           id: item.id,
-          availableCar: item.availablecar > 0 ? item.availablecar : 0,
+          availableCar: item.availablecar > 0 ? item.availablecar : 0
         }
       })
 
@@ -110,14 +116,26 @@ export default function Parking() {
   }
 
   return (
-    <MapContainer center={[25.0504753, 121.545543]} zoom={14} scrollWheelZoom={false}>
-      <Button />
+    <MapContainer
+      center={[center.lat, center.lng]}
+      zoom={14}
+      scrollWheelZoom={false}
+      zoomControl={false}
+    >
+      <LocateBtn />
+      <ZoomControl></ZoomControl>
+      <LayersControl position='bottomright'>
+        <BaseLayer checked name='Default'>
+          <TileLayer attribution={osm.default.attribution} url={osm.default.url} />
+        </BaseLayer>
+        <BaseLayer name='Tradition'>
+          <TileLayer attribution={osm.tradition.attribution} url={osm.tradition.url} />
+        </BaseLayer>
+      </LayersControl>
 
-      <TileLayer attribution={osm.maptile.attribution} url={osm.maptile.url} />
+      {/* all the parking lots pin */}
       {content}
-      <LocationMarker>
-        <Popup>You are here</Popup>
-      </LocationMarker>
+      {/* <LocationMarker /> */}
     </MapContainer>
   )
 }
