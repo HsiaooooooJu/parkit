@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { locate } from './Icons'
 import locationBtn from '../assets/images/location.svg'
 
-export default function LocateBtn({ center }) {
+export default function LocateBtn({ center, passData }) {
   const map = useMap()
   const [position, setPosition] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -42,6 +42,11 @@ export default function LocateBtn({ center }) {
       map.flyTo(center)
     } else {
       map.flyTo(position)
+      const location = {
+        lat: position[0],
+        lng: position[1]
+      }
+      passData(location)
     }
   }
 

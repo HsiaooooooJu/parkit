@@ -11,6 +11,15 @@ import AllMarker from '../components/AllMarker'
 const { BaseLayer } = LayersControl
 
 export default function Parking() {
+  // get current location from child component using callback function
+  const [currentPosition, setCurrentPosition] = useState({
+    lat: '',
+    lng: ''
+  })
+  const passData = (data) => {
+    setCurrentPosition(data)
+  }
+
   const center = { lat: 25.0504753, lng: 121.545543 }
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -106,11 +115,16 @@ export default function Parking() {
         ...all
       }
     })
-    content = <AllMarker allParkRemaining={allParkRemaining}></AllMarker>
+    content = (
+      <AllMarker
+        allParkRemaining={allParkRemaining}
+        currentPosition={currentPosition}
+      ></AllMarker>
+    )
   }
 
   return (
-    <MapContainer center={[center.lat, center.lng]} zoom={14} scrollWheelZoom={false}>
+    <MapContainer center={[center.lat, center.lng]} zoom={15} scrollWheelZoom={false}>
       <LayersControl position='bottomright'>
         <BaseLayer checked name='Default'>
           <TileLayer attribution={osm.default.attribution} url={osm.default.url} />
@@ -122,7 +136,7 @@ export default function Parking() {
       </LayersControl>
       {/* all the parking lots pin */}
       {content}
-      <LocationMarker center={center} />
+      <LocationMarker center={center} passData={passData} />
     </MapContainer>
   )
 }

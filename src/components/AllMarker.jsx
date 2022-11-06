@@ -3,6 +3,9 @@ import { Marker, Popup } from 'react-leaflet'
 import PopupContent from '../components/PopupContent'
 
 export default function AllMarker(props) {
+  console.log(props.currentPosition)
+  console.log(props)
+
   const manySpaces = props.allParkRemaining.filter((item) => {
     if (item.availableCar > 20) {
       return item
