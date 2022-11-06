@@ -9,6 +9,7 @@ import Setting from './pages/Setting'
 import About from './pages/About'
 import QuickNav from './pages/QuickNav'
 import NotFound from './pages/NotFound'
+import ParkingDetail from './pages/ParkingDetail'
 
 function App() {
   const wrapAll = (children) => {
@@ -30,6 +31,7 @@ function App() {
         <Route path='/about-us' element={wrapAll(<About />)} />
         <Route path='/quick-nav' element={wrapAll(<QuickNav />)} />
         <Route path='/parking' element={<Parking />} />
+        <Route path='/parking/:id' element={wrapAll(<ParkingDetail />)} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </HashRouter>

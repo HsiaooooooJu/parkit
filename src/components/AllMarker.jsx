@@ -1,4 +1,4 @@
-import { greenPin, redPin, grayPin } from '../components/Icons'
+import { greenPin, redPin, bluePin } from '../components/Icons'
 import { Marker, Popup } from 'react-leaflet'
 import PopupContent from '../components/PopupContent'
 
@@ -29,7 +29,7 @@ export default function AllMarker(props) {
   ))
 
   const some = someSpaces.map((item) => (
-    <Marker key={item.id} position={[item.latlng.lat, item.latlng.lng]} icon={redPin}>
+    <Marker key={item.id} position={[item.latlng.lat, item.latlng.lng]} icon={bluePin}>
       <Popup>
         <PopupContent item={item} />
       </Popup>
@@ -37,7 +37,7 @@ export default function AllMarker(props) {
   ))
 
   const empty = emptySpaces.map((item) => (
-    <Marker key={item.id} position={[item.latlng.lat, item.latlng.lng]} icon={grayPin}>
+    <Marker key={item.id} position={[item.latlng.lat, item.latlng.lng]} icon={redPin}>
       <Popup>
         <PopupContent item={item} />
       </Popup>

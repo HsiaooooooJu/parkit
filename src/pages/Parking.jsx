@@ -37,7 +37,6 @@ export default function Parking() {
           latlng,
           serviceTime: item.serviceTime,
           totalCar: item.totalcar,
-          totalMotor: item.totalmotor,
           fareWorkday: item.FareInfo.WorkingDay,
           fareHoliday: item.FareInfo.Holiday
         }
@@ -73,10 +72,6 @@ export default function Parking() {
         return {
           id: item.id,
           availableCar: item.availablecar > 0 ? item.availablecar : 0,
-          availableMotor: item.availablemotor > 0 ? item.availablemotor : 0,
-          availableChargeStation: item.ChargeStation
-            ? item.ChargeStation.scoketStatusList.length
-            : '未提供充電站'
         }
       })
 
@@ -99,13 +94,13 @@ export default function Parking() {
     return navigate('/')
   }
 
-  if (isLoading && !allPark.length && !parkRemaining.length) {
+  if (isLoading) {
     content = <Loading />
   }
 
   if (!isLoading && allPark.length > 0 && parkRemaining.length > 0) {
-    const allParkRemaining = parkRemaining.map(item => {
-      const all = allPark.find( i => i.id === item.id)
+    const allParkRemaining = parkRemaining.map((item) => {
+      const all = allPark.find((i) => i.id === item.id)
       return {
         ...item,
         ...all
@@ -119,9 +114,7 @@ export default function Parking() {
       <Button />
 
       <TileLayer attribution={osm.maptile.attribution} url={osm.maptile.url} />
-
       {content}
-
       <LocationMarker>
         <Popup>You are here</Popup>
       </LocationMarker>

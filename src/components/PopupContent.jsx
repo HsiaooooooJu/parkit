@@ -15,7 +15,7 @@ export default function PopupContent({ ...props }) {
 
   return (
     <div className='popup'>
-      <Link to='/detail' className='popup_title'>
+      <Link to='/parking/:id' className='popup_title'>
         {props.item.name}
       </Link>
       <div className='popup_sub'>

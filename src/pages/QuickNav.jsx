@@ -1,5 +1,5 @@
 // import iconBlue from '../assets/images/pinBlue.svg'
-import iconYellow from '../assets/images/gray-pin.svg'
+import grayStall from '../assets/images/gray-stall.svg'
 
 export default function QuickNav() {
   return (
@@ -8,7 +8,7 @@ export default function QuickNav() {
       <p className='quick-container_subtitle'>300 公尺以內的所有停車場</p>
       <div className='quick-container_card'>
         <div className="quick-container_card_box">
-          <img src={iconYellow} alt='iconBlue' className='quick-container_card_box_img' />
+          <img src={grayStall} className='quick-container_card_box_img' />
           <div className='quick-container_card_box_detail'>
             <h3 className='quick-container_card_box_detail_title'>
               這裡是很長很長很長很長很長很長很長的停車場名字
