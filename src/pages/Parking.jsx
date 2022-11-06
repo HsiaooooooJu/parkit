@@ -1,23 +1,17 @@
-import { MapContainer, TileLayer, LayersControl, ZoomControl } from 'react-leaflet'
+import { MapContainer, TileLayer, LayersControl } from 'react-leaflet'
 import { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { converter } from '../utils/Converter'
 import osm from '../utils/OsmProvider'
-// import LocationMarker from '../components/LocationMarker'
-import LocateBtn from '../components/LocateBtn'
+import LocationMarker from '../components/LocationMarker'
 import Loading from '../components/Loading'
 import AllMarker from '../components/AllMarker'
 
 const { BaseLayer } = LayersControl
 
 export default function Parking() {
-  const [center, setCenter] = useState({
-    lat: 25.0504753,
-    lng: 121.545543
-  })
-
-  console.log(setCenter)
+  const center = { lat: 25.0504753, lng: 121.545543 }
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
   const [allPark, setAllPark] = useState([])
@@ -116,26 +110,19 @@ export default function Parking() {
   }
 
   return (
-    <MapContainer
-      center={[center.lat, center.lng]}
-      zoom={14}
-      scrollWheelZoom={false}
-      zoomControl={false}
-    >
-      <LocateBtn />
-      <ZoomControl></ZoomControl>
+    <MapContainer center={[center.lat, center.lng]} zoom={14} scrollWheelZoom={false}>
       <LayersControl position='bottomright'>
         <BaseLayer checked name='Default'>
           <TileLayer attribution={osm.default.attribution} url={osm.default.url} />
         </BaseLayer>
+
         <BaseLayer name='Tradition'>
           <TileLayer attribution={osm.tradition.attribution} url={osm.tradition.url} />
         </BaseLayer>
       </LayersControl>
-
       {/* all the parking lots pin */}
       {content}
-      {/* <LocationMarker /> */}
+      <LocationMarker center={center} />
     </MapContainer>
   )
 }

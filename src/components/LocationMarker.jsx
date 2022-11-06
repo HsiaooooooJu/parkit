@@ -1,34 +1,62 @@
-// import { Marker, useMapEvents } from 'react-leaflet'
-// import { useState } from 'react'
+import { useMap, Marker } from 'react-leaflet'
+import { useState, useEffect } from 'react'
+import { locate } from './Icons'
+import locationBtn from '../assets/images/location.svg'
 
-// import { locate } from '../components/Icons'
+export default function LocateBtn({ center }) {
+  const map = useMap()
+  const [position, setPosition] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
 
-// export default function LocationMarker({ children }) {
-//   const [position, setPosition] = useState(null)
-//   const map = useMapEvents({
-//     click() {
-//       map.locate()
-//     },
-//     locationfound(e) {
-//       setPosition(e.latlng)
-//       map.flyTo(e.latlng, map.getZoom())
-//     }
-//   })
+  const getPosition = function () {
+    return new Promise(function (resolve, reject) {
+      navigator.geolocation.getCurrentPosition(resolve, reject)
+    })
+  }
+  useEffect(() => {
+    setIsLoading(true)
+    getPosition()
+      .then((position) => {
+        const lat = position.coords.latitude
+        const lng = position.coords.longitude
+        setPosition([lat, lng])
+        return position
+      })
+      .catch((error) => {
+        if (error.code === 1) {
+          alert('請開啟定位功能')
+        } else {
+          map.flyTo(center)
+          alert('無法取得當前位置，請稍後再試')
+        }
+      })
+    setIsLoading(false)
+  }, [])
 
-//   console.log('found in map = =')
+  function handleClick() {
+    if (position === null) {
+      map.flyTo(center)
+      alert('無法取得當前位置，請稍後再試')
+      return
+    } else if (isLoading) {
+      map.flyTo(center)
+    } else {
+      map.flyTo(position)
+    }
+  }
 
-//   return position === null ? null : (
-//     <Marker position={position} icon={locate}>
-//       {children}
-//     </Marker>
-//   )
-// }
-
-
-// function GetDistance() {
-//   const map = useMap()
-//   // 得到兩點的距離
-//   // const dist = map.distance([25.0504753, 121.545543], [25.04754574, 121.5716298])
-//   console.log(dist)
-//   return dist
-// }
+  return position === null ? (
+    <>
+      <button className='map-container_locate'>
+        <img src={locationBtn} onClick={handleClick} />
+      </button>
+    </>
+  ) : (
+    <>
+      <Marker position={position} icon={locate} />
+      <button className='map-container_locate'>
+        <img src={locationBtn} onClick={handleClick} />
+      </button>
+    </>
+  )
+}
