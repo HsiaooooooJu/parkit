@@ -56,6 +56,12 @@
   }
 }
 
+.leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+  border: none;
+  box-shadow: 1px 3px 6px 1px rgba(0, 0, 0, 0.1);
+  letter-spacing: 1px;
+}
+
 @media screen and (min-width: 500px) {
   .leaflet-container .leaflet-control-attribution {
     display: flex;
