@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/parkit/static/css/main.556ad002.css",
-    "main.js": "/parkit/static/js/main.1b68e4e8.js",
+    "main.css": "/parkit/static/css/main.aaac163e.css",
+    "main.js": "/parkit/static/js/main.0d02877a.js",
     "static/media/Tradition.png": "/parkit/static/media/Tradition.23d03be9a3b71fcbd720.png",
     "static/media/Default.png": "/parkit/static/media/Default.50d5c8db37b966068a0a.png",
     "static/media/main.svg": "/parkit/static/media/main.5b0d59c9c6ab94bdd3873e28b4f499e2.svg",
@@ -16,11 +16,11 @@
     "static/media/green-pin.svg": "/parkit/static/media/green-pin.aa793ed4931e984b533c51666e4e49aa.svg",
     "static/media/red-pin.svg": "/parkit/static/media/red-pin.79420257c40866f6edaa8fdcaf4800ec.svg",
     "static/media/navbar.svg": "/parkit/static/media/navbar.4bac4cf3120ce46741129e42a9aebdb1.svg",
-    "main.556ad002.css.map": "/parkit/static/css/main.556ad002.css.map",
-    "main.1b68e4e8.js.map": "/parkit/static/js/main.1b68e4e8.js.map"
+    "main.aaac163e.css.map": "/parkit/static/css/main.aaac163e.css.map",
+    "main.0d02877a.js.map": "/parkit/static/js/main.0d02877a.js.map"
   },
   "entrypoints": [
-    "static/css/main.556ad002.css",
-    "static/js/main.1b68e4e8.js"
+    "static/css/main.aaac163e.css",
+    "static/js/main.0d02877a.js"
   ]
 }
