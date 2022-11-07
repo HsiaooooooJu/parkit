@@ -62,6 +62,21 @@
   letter-spacing: 1px;
 }
 
+.leaflet-control-layers-base {
+  > label {
+    padding: 1rem;
+    > span {
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+  }
+  > label:last-child {
+    padding-top: 0;
+  }
+}
+
 @media screen and (min-width: 500px) {
   .leaflet-container .leaflet-control-attribution {
     display: flex;
