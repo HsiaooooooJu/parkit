@@ -36,10 +36,10 @@ export default function LocateBtn({ center, passData }) {
   function handleClick() {
     if (position === null) {
       map.flyTo(center)
-      alert('無法取得當前位置，請稍後再試')
       return
     } else if (isLoading) {
       map.flyTo(center)
+      return
     } else {
       map.flyTo(position)
       const location = {
@@ -52,7 +52,7 @@ export default function LocateBtn({ center, passData }) {
 
   return position === null ? (
     <>
-      <button className='map-container_locate'>
+      <button disabled className='map-container_locate'>
         <img src={locationBtn} onClick={handleClick} />
       </button>
     </>
