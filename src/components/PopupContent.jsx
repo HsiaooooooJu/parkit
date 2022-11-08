@@ -1,18 +1,6 @@
 import { Link } from 'react-router-dom'
 
-export default function PopupContent({ ...props }) {
-  // get all fare in different period
-  const allWorkdayFare = props.item.fareWorkday.map((item) => {
-    return item.Fare
-  })
-  const allHolidayFare = props.item.fareHoliday.map((item) => {
-    return item.Fare
-  })
-
-  // concat to merge 2 array
-  // Math.max(...array) to get the max num in an array
-  const maxFare = Math.max(...allWorkdayFare.concat(allHolidayFare))
-
+export default function PopupContent(props) {
   return (
     <div className='popup'>
       <Link to='/parking/:id' className='popup_title'>
@@ -27,10 +15,14 @@ export default function PopupContent({ ...props }) {
           <span className='popup_sub_box_title'>總車位</span>
           <span className='popup_sub_box_num'>{props.item.totalCar}</span>
         </div>
-        <div className='popup_sub_box'>
-          <span className='popup_sub_box_price'>$ {maxFare}/h</span>
-        </div>
       </div>
+      <div className="popup_sub_box_title popup_sub_box_title_colored">費率</div>
+      <div className="popup_payex">{props.item.payex}</div>
+      <div className="popup_sub_box_title popup_sub_box_title_colored">營業時間</div>
+      <div className="popup_payex">{props.item.serviceTime}</div>
+      <div className="popup_sub_box_title popup_sub_box_title_colored">地址</div>
+      <div className="popup_payex">{props.item.address}</div><div className="popup_sub_box_title popup_sub_box_title_colored">電話</div>
+      <div className="popup_payex">{props.item.tel}</div>
     </div>
   )
 }

@@ -43,8 +43,6 @@ export default function Parking() {
             latlng,
             serviceTime: item.serviceTime,
             totalCar: item.totalcar,
-            fareWorkday: item.FareInfo.WorkingDay,
-            fareHoliday: item.FareInfo.Holiday,
             availableCar: spaces ? spaces.availablecar : 0
           }
         })
@@ -68,11 +66,11 @@ export default function Parking() {
     return navigate('/')
   }
 
-  if (isLoading) {
+  if (allPark.length === 0 && isLoading) {
     return (content = <Loading />)
   }
 
-  if (!isLoading) {
+  if (!isLoading && allPark.length > 0) {
     passData = (data) => {
       setCurrentPosition(data)
     }

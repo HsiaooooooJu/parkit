@@ -32,7 +32,7 @@ export default function Navbar() {
               關於我們
             </CustomLink>
             <CustomLink to='/quick-nav' onClick={toggle}>
-              快速導引
+              使用說明
             </CustomLink>
             <CustomLink to='/parking' onClick={toggle}>
               停車地圖

@@ -7,6 +7,6 @@ export default {
   tradition: {
     url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
     attribution:
-      '<a href="https://www.openstreetmap.org/copyright">&copy OpenStreetMap</a> contributors <a href="https://carto.com/attributions">&copyCARTO</a>'
+      '<a href="https://www.openstreetmap.org/copyright">&copy OpenStreetMap</a><a href="https://carto.com/attributions">&copyCARTO</a>'
   }
 }

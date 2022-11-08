@@ -7,14 +7,23 @@ import Home from './pages/Home'
 import Parking from './pages/Parking'
 import Setting from './pages/Setting'
 import About from './pages/About'
-import QuickNav from './pages/QuickNav'
+import QuickStart from './pages/QuickStart'
 import NotFound from './pages/NotFound'
-import ParkingDetail from './pages/ParkingDetail'
 
 function App() {
+  const wrap = (children) => {
+    return (
+      <>
+        <Navbar />
+        {children}
+      </>
+    )
+  }
+
   const wrapAll = (children) => {
     return (
       <>
+        <Navbar />
         {children}
         <Footer />
       </>
@@ -23,15 +32,13 @@ function App() {
 
   return (
     <HashRouter>
-      <Navbar />
       <Routes>
         <Route path='/' element={<Navigate replace to='/home' />} />
         <Route path='/home' element={wrapAll(<Home />)} />
         <Route path='/setting' element={wrapAll(<Setting />)} />
         <Route path='/about-us' element={wrapAll(<About />)} />
-        <Route path='/quick-nav' element={wrapAll(<QuickNav />)} />
-        <Route path='/parking' element={<Parking />} />
-        <Route path='/parking/:id' element={wrapAll(<ParkingDetail />)} />
+        <Route path='/quick-nav' element={wrapAll(<QuickStart />)} />
+        <Route path='/parking' element={wrap(<Parking />)} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </HashRouter>
