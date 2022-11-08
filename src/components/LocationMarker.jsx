@@ -8,9 +8,12 @@ export default function LocateBtn({ center, passData }) {
   const [position, setPosition] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
+  const option = {
+    enableHighAccuracy: true,
+  }
   const getPosition = function () {
     return new Promise(function (resolve, reject) {
-      navigator.geolocation.getCurrentPosition(resolve, reject)
+      navigator.geolocation.getCurrentPosition(resolve, reject, option)
     })
   }
   useEffect(() => {

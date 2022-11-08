@@ -18,7 +18,7 @@ export default function AllMarker(props) {
   })
 
   const nearBy = distance.filter((item) => {
-    return item.distance < 450
+    return item.distance < 550
   })
 
   const many = nearBy

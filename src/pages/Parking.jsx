@@ -11,51 +11,61 @@ import AllMarker from '../components/AllMarker'
 
 const { BaseLayer } = LayersControl
 
+export async function fetchAllPark() {
+  const response = await fetch(
+    'https://tcgbusfs.blob.core.windows.net/blobtcmsv/TCMSV_alldesc.json'
+  )
+  return await response.json()
+}
+
+export async function fetchAllRemain() {
+  const response = await fetch(
+    'https://tcgbusfs.blob.core.windows.net/blobtcmsv/TCMSV_allavailable.json'
+  )
+  return await response.json()
+}
+
 export default function Parking() {
   const center = { lat: 25.0504753, lng: 121.545543 }
   const [currentPosition, setCurrentPosition] = useState(center)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
-
   const [allPark, setResPark] = useState([])
-
-  const navigate = useNavigate()
 
   useEffect(() => {
     setIsLoading(true)
     setError(null)
 
-    Promise.all([
-      fetch('https://tcgbusfs.blob.core.windows.net/blobtcmsv/TCMSV_alldesc.json'),
-      fetch('https://tcgbusfs.blob.core.windows.net/blobtcmsv/TCMSV_allavailable.json')
-    ])
-      .then(([resPark, resRemain]) => Promise.all([resPark.json(), resRemain.json()]))
-      .then(([dataPark, dataRemain]) => {
-        const parks = dataPark.data.park.map((item) => {
-          const latlng = converter(item.tw97x, item.tw97y)
-          const spaces = dataRemain.data.park.find((i) => i.id === item.id)
-          return {
-            id: item.id,
-            name: item.name,
-            address: item.address,
-            tel: item.tel,
-            payex: item.payex,
-            latlng,
-            serviceTime: item.serviceTime,
-            totalCar: item.totalcar,
-            availableCar: spaces ? spaces.availablecar : 0
-          }
+    const timer = setTimeout(() => {
+      Promise.all([fetchAllPark(), fetchAllRemain()])
+        .then(([dataPark, dataRemain]) => {
+          const parks = dataPark.data.park.map((item) => {
+            const latlng = converter(item.tw97x, item.tw97y)
+            const spaces = dataRemain.data.park.find((i) => i.id === item.id)
+            return {
+              id: item.id,
+              name: item.name,
+              address: item.address,
+              tel: item.tel,
+              payex: item.payex,
+              latlng,
+              serviceTime: item.serviceTime,
+              totalCar: item.totalcar,
+              availableCar: spaces ? spaces.availablecar : 0
+            }
+          })
+          setResPark(parks)
         })
-        setResPark(parks)
-      })
-      .catch((error) => {
-        alert('無法取得停車場資料，請稍後再試')
-        setError(error)
-      })
-    setIsLoading(false)
+        .catch((error) => {
+          alert('無法取得停車場資料，請稍後再試')
+          setError(error)
+        })
+      setIsLoading(false)
+    }, 3000)
+    return () => clearTimeout(timer)
   }, [])
 
-  // get current location from child component using callback function
+  // get current location from LocationMarker using callback function
   let passData
 
   // content depends on different state
@@ -63,10 +73,11 @@ export default function Parking() {
 
   if (error) {
     alert('無法取得停車場資料，請稍後再試')
+    const navigate = useNavigate()
     return navigate('/')
   }
 
-  if (allPark.length === 0 && isLoading) {
+  if (isLoading && allPark.length === 0) {
     return (content = <Loading />)
   }
 
@@ -80,7 +91,7 @@ export default function Parking() {
   return (
     <MapContainer
       center={[center.lat, center.lng]}
-      zoom={16}
+      zoom={17}
       minZoom={15}
       scrollWheelZoom={false}
     >
@@ -95,7 +106,11 @@ export default function Parking() {
       </LayersControl>
       {/* all the parking lots pin */}
       {content}
-      <LocationMarker center={center} passData={passData} />
+      <LocationMarker
+        center={center}
+        passData={passData}
+        fetchAllRemain={fetchAllRemain}
+      />
     </MapContainer>
   )
 }
