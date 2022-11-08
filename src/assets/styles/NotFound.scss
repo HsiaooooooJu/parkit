@@ -1,3 +1,67 @@
 .not-found-container {
-  margin-top: 50px;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--primary);
+}
+
+.not-found {
+  width: 100%;
+  max-width: 768px;
+
+  &_cloud {
+    position: relative;
+
+    &_small {
+      position: absolute;
+      top: 10%;
+      left: 25%;
+      transform: translate(-50%, -50%);
+      width: 6rem;
+    }
+
+    &_large {
+      position: absolute;
+      top: 22%;
+      left: 67%;
+      transform: translate(-50%, -50%);
+      width: 9rem;
+    }
+  }
+
+  &_title {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    transform: translate(-50%, -50%);
+    color: var(--blue-80);
+    text-align: center;
+    font-size: 36px;
+    letter-spacing: 1px;
+  }
+
+  &_car {
+    position: absolute;
+    bottom: 19.4vh;
+    left: 25%;
+    width: 270px;
+  }
+
+  &_block {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: 20vh;
+    background-color: var(--secondary);
+
+    &_arrow {
+      position: absolute;
+      bottom: 4.5vh;
+      left: 18%;
+      transform: translateX(-50%);
+      width: 60px;
+    }
+  }
 }
