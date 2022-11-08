@@ -31,7 +31,7 @@ export default function Parking() {
     ])
       .then(([resPark, resRemain]) => Promise.all([resPark.json(), resRemain.json()]))
       .then(([dataPark, dataRemain]) => {
-        const parks = dataPark.data.park.slice(50, 60).map((item) => {
+        const parks = dataPark.data.park.map((item) => {
           const latlng = converter(item.tw97x, item.tw97y)
           const spaces = dataRemain.data.park.find((i) => i.id === item.id)
           return {
@@ -39,20 +39,23 @@ export default function Parking() {
             name: item.name,
             address: item.address,
             tel: item.tel,
+            payex: item.payex,
             latlng,
             serviceTime: item.serviceTime,
             totalCar: item.totalcar,
-            fareWorkingDay: item.FareInfo.WorkingDay,
+            fareWorkday: item.FareInfo.WorkingDay,
             fareHoliday: item.FareInfo.Holiday,
-            availablecar: spaces ? spaces.availablecar : 0
+            availableCar: spaces ? spaces.availablecar : 0
           }
         })
         setResPark(parks)
       })
+      .catch((error) => {
+        alert('無法取得停車場資料，請稍後再試')
+        setError(error)
+      })
     setIsLoading(false)
   }, [])
-
-  console.log('resPark', allPark)
 
   // get current location from child component using callback function
   let passData
@@ -61,15 +64,15 @@ export default function Parking() {
   let content
 
   if (error) {
-    alert(error)
+    alert('無法取得停車場資料，請稍後再試')
     return navigate('/')
   }
 
   if (isLoading) {
-    content = <Loading />
+    return (content = <Loading />)
   }
 
-  if (!isLoading && allPark.length > 0) {
+  if (!isLoading) {
     passData = (data) => {
       setCurrentPosition(data)
     }
@@ -79,7 +82,7 @@ export default function Parking() {
   return (
     <MapContainer
       center={[center.lat, center.lng]}
-      zoom={17}
+      zoom={16}
       minZoom={15}
       scrollWheelZoom={false}
     >
