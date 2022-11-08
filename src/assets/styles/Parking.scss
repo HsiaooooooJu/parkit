@@ -2,13 +2,13 @@
   width: 230px;
   
   > a {
-    color: var(--blue-80);
+    color: var(--blue-60);
   }
 
   &_title {
     padding-bottom: 4px;
-    font-size: 0.95rem;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 700;
     letter-spacing: 0.05rem;
   }
 
@@ -22,34 +22,36 @@
       &_title {
         margin-right: 8px;
         padding-top: 8px;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         font-weight: 500;
-
-        &_colored {
-          padding-top: 8px;
-          color: var(--blue-80);
-          font-size: 0.8rem;
-          font-weight: 500;
-          letter-spacing: 1px;
-        }
       }
 
       &_num {
-        color: var(--blue-60);
-        font-size: 0.8rem;
+        color: var(--blue-80);
+        font-size: 0.9rem;
         font-weight: 700;
         letter-spacing: 1px;
       }
     }
   }
 
-  &_payex {
-    padding-top: 4px;
-    color: var(--dark-80);
-    font-size: 0.75rem;
-    font-weight: 500;
-    line-height: 1.5;
-    letter-spacing: 0.05rem;
+  &_detail_box {
+    margin-top: 0.6rem;
+
+    &_title {
+      margin: 0;
+      padding: 0.1rem 0;
+      color: var(--blue-80);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    &_body {
+      color: var(--dark-100);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
   }
 }
 
