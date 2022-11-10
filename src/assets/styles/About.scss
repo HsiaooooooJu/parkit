@@ -39,8 +39,35 @@
   }
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 550px) {
   .about_container {
     max-width: 768px;
+    padding: 2.5rem 1rem;
+
+    &_title {
+      font-size: 1.6rem;
+    }
+
+    &_content {
+      margin: 15px 0 40px;
+      font-size: 1.4rem;
+    }
+
+    &_box {
+      display: flex;
+      flex-direction: column;
+      margin-right: 1.5rem;
+
+      &_title,
+      &_text {
+        margin-bottom: 4px;
+        color: var(--dark-80);
+        font-size: 1.4rem;
+      }
+
+      &_title {
+        font-weight: 500;
+      }
+    }
   }
 }
