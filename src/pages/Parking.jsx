@@ -9,6 +9,7 @@ import { fetchAllPark, fetchAllRemain } from '../apis/ParkingAPI'
 import LocationMarker from '../components/LocationMarker'
 import Loading from '../components/Loading'
 import AllMarker from '../components/AllMarker'
+import ShowAllBtn from '../components/ShowAllBtn'
 
 const { BaseLayer } = LayersControl
 
@@ -16,13 +17,18 @@ export default function Parking() {
   const center = { lat: 25.0504753, lng: 121.545543 }
   const [currentPosition, setCurrentPosition] = useState(center)
   const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState(null)
+
   const [allPark, setResPark] = useState([])
+  const [isClicked, setIsClicked] = useState(false)
+  const handleShowAll = () => {
+    setIsClicked(!isClicked)
+  }
+  const navigate = useNavigate()
 
   useEffect(() => {
     setIsLoading(true)
-    setError(null)
-    const timer = setTimeout(() => {
+
+    const timer = window.setTimeout(() => {
       Promise.all([fetchAllPark(), fetchAllRemain()])
         .then(([dataPark, dataRemain]) => {
           const parks = dataPark.data.park.map((item) => {
@@ -43,42 +49,42 @@ export default function Parking() {
           setResPark(parks)
         })
         .catch((error) => {
-          alert('網路不穩定，請稍後再試')
-          setError(error)
+          alert('網路連線不穩定，請稍後再試')
+          console.log(error)
+          return navigate('/')
         })
       setIsLoading(false)
-    }, 3000)
+    }, 3500)
     return () => clearTimeout(timer)
   }, [])
 
   // get current location from LocationMarker using callback function
-  let passData
+  let passData = (data) => {
+    setCurrentPosition(data)
+  }
 
   // content depends on different state
   let content
-
-  if (error) {
-    alert('無法取得停車場資料，請稍後再試')
-    const navigate = useNavigate()
-    return navigate('/')
-  }
 
   if (isLoading && allPark.length === 0) {
     return (content = <Loading />)
   }
 
   if (!isLoading && allPark.length > 0) {
-    passData = (data) => {
-      setCurrentPosition(data)
-    }
-    content = <AllMarker allPark={allPark} currentPosition={currentPosition}></AllMarker>
+    content = (
+      <AllMarker
+        allPark={allPark}
+        currentPosition={currentPosition}
+        isClicked={isClicked}
+      />
+    )
   }
 
   return (
     <MapContainer
       center={[center.lat, center.lng]}
-      zoom={17}
-      minZoom={15}
+      zoom={16}
+      minZoom={14}
       scrollWheelZoom={false}
     >
       <LayersControl position='bottomright'>
@@ -91,6 +97,11 @@ export default function Parking() {
         </BaseLayer>
       </LayersControl>
       {/* all the parking lots pin */}
+      <ShowAllBtn
+        isClicked={isClicked}
+        handleShowAll={handleShowAll}
+        isLoading={isLoading}
+      />
       {content}
       <LocationMarker
         center={center}
