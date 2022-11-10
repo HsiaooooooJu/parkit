@@ -2,8 +2,8 @@ import { MapContainer, TileLayer, LayersControl } from 'react-leaflet'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { converter } from '../utils/Converter'
-import osm from '../utils/OsmProvider'
+import { converter } from '../utils/converter'
+import osm from '../utils/osmProvider'
 import { fetchAllPark, fetchAllRemain } from '../apis/ParkingAPI'
 
 import LocationMarker from '../components/LocationMarker'
@@ -43,7 +43,7 @@ export default function Parking() {
           setResPark(parks)
         })
         .catch((error) => {
-          alert('無法取得停車場資料，請稍後再試')
+          alert('網路不穩定，請稍後再試')
           setError(error)
         })
       setIsLoading(false)
