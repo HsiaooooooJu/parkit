@@ -30,9 +30,21 @@
   }
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 550px) {
   .setting-container {
     max-width: 768px;
+
+    &_title {
+      padding: 2.5rem 0 0;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    &_text {
+      margin: 1rem 0 2.5rem ;
+      font-size: 1.3rem;
+    }
+
 
     &_style {
       justify-content: flex-start;

@@ -41,3 +41,40 @@
     }
   }
 }
+
+@media screen and (min-width: 550px) {
+  .quick-container {
+    padding: 2.5rem 1rem 0;
+
+    &_title {
+      margin-bottom: 0.5rem;
+      font-size: 1.6rem;
+    }
+
+    &_subtitle {
+      margin: 0;
+      padding: 0 0 1rem;
+      font-size: 1.3rem;
+    }
+
+    &_card {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 1.5rem 0.5rem;
+      border-bottom: 1px solid var(--dark-20);
+
+      &_img {
+        width: 50px;
+        margin: 5px 10px 5px 0;
+      }
+
+      &_text {
+        margin: 0 0 10px 10px;
+        color: var(--dark-80);
+        font-size: 1.35rem;
+        font-weight: 500;
+      }
+    }
+  }
+}
