@@ -1,7 +1,7 @@
 .nav {
   position: fixed;
   top: 0;
-  z-index: 999;
+  z-index: 1100;
   width: 100%;
   min-width: 320px;
   background-color: var(--dark-0);
@@ -21,9 +21,23 @@
     width: 105px;
   }
 
+  &_backdrop {
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    display: none;
+  }
+
   &_list {
     position: absolute;
-    top: 50px;
+    top: 0;
     left: 0;
     display: none;
     width: 100%;
@@ -85,7 +99,7 @@
       all: unset;
       display: flex;
       align-items: center;
-      width: 70%;
+      width: 100%;
       max-width: calc(768px / 2);
       height: 100%;
       margin-right: 5px;
@@ -94,7 +108,9 @@
     &_item {
       justify-content: space-around;
       padding-right: 0;
-      border: none;
+      width: 50%;
+      max-width: calc(768px / 2);
+      height: 100%;
     }
 
     &_title {

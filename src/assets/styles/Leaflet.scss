@@ -1,0 +1,91 @@
+.leaflet-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: calc(100vh - 50px);
+}
+
+.leaflet-touch .leaflet-bar {
+  border: none;
+}
+
+.leaflet-bar a {
+  color: var(--blue-60);
+  border-bottom: 2px solid var(--dark-20);
+}
+
+.leaflet-touch .leaflet-control-zoom-in,
+.leaflet-touch .leaflet-control-zoom-out {
+  position: fixed;
+  bottom: 15px;
+  margin-left: 10px;
+  padding: 22px;
+  font-size: 1.65rem;
+  box-shadow: 1px 3px 6px 1px rgba(0, 0, 0, 0.1);
+
+  span {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -55%);
+  }
+}
+
+.leaflet-control-zoom-in {
+  margin-bottom: 50px;
+}
+
+.leaflet-control-zoom-out {
+  margin-bottom: 6px;
+}
+
+.leaflet-touch .leaflet-bar > a:first-child {
+  border-top-left-radius: 40%;
+  border-top-right-radius: 40%;
+}
+.leaflet-touch .leaflet-bar > a:last-child {
+  border-bottom-left-radius: 40%;
+  border-bottom-right-radius: 40%;
+}
+
+.leaflet-container .leaflet-control-attribution {
+  margin: 0;
+  padding: 5px 10px;
+
+  > span {
+    display: none;
+  }
+}
+
+.leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+  border: none;
+  box-shadow: 1px 3px 6px 1px rgba(0, 0, 0, 0.1);
+  letter-spacing: 1px;
+}
+
+.leaflet-control-layers-base {
+  > label {
+    padding: 1rem;
+    > span {
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+  }
+  > label:last-child {
+    padding-top: 0;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .leaflet-container .leaflet-control-attribution {
+    display: flex;
+    justify-content: flex-end;
+    width: 425px;
+    text-align: left;
+
+    > span {
+      display: none;
+    }
+  }
+}

@@ -1,34 +1,20 @@
-import '../assets/styles/Setting.scss'
-import retro from '../assets/images/retro.png'
-import silver from '../assets/images/silver.png'
+import defaultMap from '../assets/images/Default.png'
+import tradition from '../assets/images/Tradition.png'
 
 export default function Setting() {
   return (
     <div className='setting-container'>
       <div className='setting-container_title'>地圖樣式</div>
-      <p className='setting-container_text'>請選擇您想使用的樣式 ：</p>
+      <p className='setting-container_text'>Parkit 提供了兩種地圖樣式：</p>
       <div className='setting-container_style'>
         <div className='setting-container_style_box'>
-          <label htmlFor='silver' className='setting-container_style_box_label' />
-          <img src={retro} alt='retro' className='setting-container_style_box_img' />
-          <input
-            type='radio'
-            name='map-style'
-            id='silver'
-            className='setting-container_style_box_input'
-          />
+           <img src={defaultMap} alt='default' className='setting-container_style_box_img' />
         </div>
         <div className='setting-container_style_box'>
-          <label htmlFor='retro' className='setting-container_style_box_label' />
-          <img src={silver} alt='silver' className='setting-container_style_box_img' />
-          <input
-            type='radio'
-            name='map-style'
-            id='retro'
-            className='setting-container_style_box_input'
-          />
+          <img src={tradition} alt='tradition' className='setting-container_style_box_img' />
         </div>
       </div>
+      
     </div>
   )
 }

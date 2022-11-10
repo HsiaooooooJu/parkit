@@ -1,0 +1,43 @@
+.quick-container {
+  width: 100%;
+  min-width: 300px;
+  max-width: 768px;
+  margin: 60px auto 0 auto;
+  padding: 1rem;
+
+  &_title {
+    margin-bottom: 0.5rem;
+    color: var(--blue-80);
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  &_subtitle {
+    margin: 0.5rem 0;
+    padding: 0;
+    color: var(--dark-80);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  &_card {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 0.5rem;
+    border-bottom: 1px solid var(--dark-20);
+
+    &_img {
+      width: 28px;
+      margin: 4px;
+    }
+
+    &_text {
+      margin: 0 0 10px 10px;
+      color: var(--dark-80);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+  }
+}

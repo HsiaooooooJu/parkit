@@ -1,128 +1,102 @@
-import '../assets/styles/Parking.scss'
+import { MapContainer, TileLayer, LayersControl } from 'react-leaflet'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-// // useMemo memorize the result
-// import { useMemo, useRef, useCallback } from 'react'
-// import { useLoadScript, GoogleMap, MarkerF } from '@react-google-maps/api'
+import { converter } from '../utils/Converter'
+import osm from '../utils/OsmProvider'
+import { fetchAllPark, fetchAllRemain } from '../apis/ParkingAPI'
 
-// export default function Parking() {
-//   const { isLoaded } = useLoadScript({
-//     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-//     libraries: ['places']
-//   })
+import LocationMarker from '../components/LocationMarker'
+import Loading from '../components/Loading'
+import AllMarker from '../components/AllMarker'
 
-//   if (!isLoaded) {
-//     return <div className='map-loading'>Loading...</div>
-//   }
-//   return <Map />
-// }
-
-// function Map() {
-//   // save the position
-//   const mapRef = useRef()
-
-//   // useMemo: tell React to generate the value once and reuse, unless one of the dependency change which is the second array
-//   const center = useMemo(() => ({ lat: 25.04, lng: 121.53 }), [])
-
-//   const options = useMemo(
-//     () => ({
-//       mapId: '7ae8c2b79e71f6a0',
-//       disableDefaultUI: true,
-//       clickableIcons: false
-//     }),
-//     []
-//   const onLoad = useCallback((map) => (mapRef.current = map), [])
-
-//   return (
-//     <div className='map'>
-//       <GoogleMap
-//         zoom={14}
-//         center={center}
-//         mapContainerClassName='map-container'
-//         options={options}
-//         onLoad={onLoad}
-//       >
-//         <MarkerF position={{ lat: 25.04, lng: 121.53 }}></MarkerF>
-//       </GoogleMap>
-//     </div>
-//   )
-// }
-
-// import { useLoadScript, GoogleMap, InfoWindow, MarkerF } from '@react-google-maps/api'
-// import React, { useState } from 'react'
-
-// const markers = [
-//   {
-//     id: 1,
-//     name: 'Taipei',
-//     position: { lat: 25.04, lng: 121.53 }
-//   },
-//   {
-//     id: 2,
-//     name: 'sth',
-//     position: { lat: 25.2, lng: 121.53 }
-//   }
-// ]
-
-// export default function Parking() {
-//   const { isLoaded } = useLoadScript({
-//     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
-//   })
-
-//   if (!isLoaded) {
-//     return <div>Loading...</div>
-//   }
-//   return <Map />
-// }
-
-// function Map() {
-
-//   const [activeMarker, setActiveMarker] = useState(null)
-//   const handleActiveMarker = (marker) => {
-//     if (marker === activeMarker) {
-//       return
-//     }
-//     setActiveMarker(marker)
-//   }
-
-//   const handleOnLoad = (map) => {
-//     // eslint-disable-next-line no-undef
-//     const bounds = new google.maps.LatLngBounds()
-//     markers.forEach(({ position }) => bounds.extend(position))
-//     map.fitBounds(bounds)
-//   }
-
-//   return (
-//     <GoogleMap onLoad={handleOnLoad} onClick={() => setActiveMarker(null)} zoom={14} mapContainerClassName='map-container'>
-//       {markers.map(({id, name, position}) => (
-//         <MarkerF key={id} position={position} onClick={() => handleActiveMarker(id)}>
-//           {activeMarker === id ? (
-//             <InfoWindow onCloseClick={() => setActiveMarker(null)}>
-//               <div>{name}</div>
-//             </InfoWindow>
-//           ) : null}
-//         </MarkerF>
-//       ))}
-//     </GoogleMap>
-//   )
-// }
-
-import { useLoadScript } from '@react-google-maps/api'
-import Navbar from '../components/Navbar'
-import Map from '../components/Map'
-
-function LoadMap() {
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-  })
-
-  return isLoaded ? <Map /> : <div className='map-loading'>Loading...</div>
-}
+const { BaseLayer } = LayersControl
 
 export default function Parking() {
+  const center = { lat: 25.0504753, lng: 121.545543 }
+  const [currentPosition, setCurrentPosition] = useState(center)
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const [allPark, setResPark] = useState([])
+
+  useEffect(() => {
+    setIsLoading(true)
+    setError(null)
+    const timer = setTimeout(() => {
+      Promise.all([fetchAllPark(), fetchAllRemain()])
+        .then(([dataPark, dataRemain]) => {
+          const parks = dataPark.data.park.map((item) => {
+            const latlng = converter(item.tw97x, item.tw97y)
+            const spaces = dataRemain.data.park.find((i) => i.id === item.id)
+            return {
+              id: item.id,
+              name: item.name,
+              address: item.address,
+              tel: item.tel,
+              payex: item.payex,
+              latlng,
+              serviceTime: item.serviceTime,
+              totalCar: item.totalcar,
+              availableCar: spaces ? spaces.availablecar : 0
+            }
+          })
+          setResPark(parks)
+        })
+        .catch((error) => {
+          alert('無法取得停車場資料，請稍後再試')
+          setError(error)
+        })
+      setIsLoading(false)
+    }, 3000)
+    return () => clearTimeout(timer)
+  }, [])
+
+  // get current location from LocationMarker using callback function
+  let passData
+
+  // content depends on different state
+  let content
+
+  if (error) {
+    alert('無法取得停車場資料，請稍後再試')
+    const navigate = useNavigate()
+    return navigate('/')
+  }
+
+  if (isLoading && allPark.length === 0) {
+    return (content = <Loading />)
+  }
+
+  if (!isLoading && allPark.length > 0) {
+    passData = (data) => {
+      setCurrentPosition(data)
+    }
+    content = <AllMarker allPark={allPark} currentPosition={currentPosition}></AllMarker>
+  }
+
   return (
-    <>
-      <Navbar />
-      <LoadMap />
-    </>
+    <MapContainer
+      center={[center.lat, center.lng]}
+      zoom={17}
+      minZoom={15}
+      scrollWheelZoom={false}
+    >
+      <LayersControl position='bottomright'>
+        <BaseLayer checked name='Default'>
+          <TileLayer attribution={osm.default.attribution} url={osm.default.url} />
+        </BaseLayer>
+
+        <BaseLayer name='Tradition'>
+          <TileLayer attribution={osm.tradition.attribution} url={osm.tradition.url} />
+        </BaseLayer>
+      </LayersControl>
+      {/* all the parking lots pin */}
+      {content}
+      <LocationMarker
+        center={center}
+        passData={passData}
+        fetchAllRemain={fetchAllRemain}
+      />
+    </MapContainer>
   )
 }

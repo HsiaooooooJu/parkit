@@ -1,48 +1,89 @@
-.map-container {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-}
-
-.places-container {
-
-  &_input {
-    position: absolute;
-    top: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    width: 50%;
-    height: 2.5rem;
-    padding: 0.5rem;
-    border-radius: 6px;
-    box-shadow: 0 1px 8px 3px rgba(90, 90, 90, 0.2);
-    background-color: var(--dark-0);
+.popup {
+  width: 230px;
+  
+  > a {
+    color: var(--blue-60);
   }
 
-  &_select {
-    position: absolute;
-    top: calc(5% + 2.5rem);
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 11;
-    width: 50%;
-    margin-top: -5px;
-    padding: 12px 10px;
-    border: none;
-    font-size: 0.85rem;
-    font-weight: 400;
-    background-color: var(--dark-0);
+  &_title {
+    padding-bottom: 4px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.05rem;
+  }
+
+  &_sub {
+    display: flex;
+    justify-content: space-between;
+    
+    &_box {
+      margin-right: 20px;
+
+      &_title {
+        margin-right: 8px;
+        padding-top: 8px;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      &_num {
+        color: var(--blue-80);
+        font-size: 0.9rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+    }
+  }
+
+  &_detail_box {
+    margin-top: 0.6rem;
+
+    &_title {
+      margin: 0;
+      padding: 0.1rem 0;
+      color: var(--blue-80);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    &_body {
+      color: var(--dark-100);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
   }
 }
 
-.map-loading {
-  width: 100%;
-  height: 100vh;
-  margin: 10% auto;
-  text-align: center;
-  font-size: 40px;
-  font-weight: 300;
-  background-color: #EBE2CE;
+.leaflet-div-icon.leaflet-marker-icon {
+  border: none;
+
+  > div {
+    width: 25px;
+  }
+}
+
+.map-container_locate {
+  position: fixed;
+  bottom: 125px;
+  left: 0;
+  z-index: 500;
+  width: 45px;
+  height: 45px;
+  margin-left: 20px;
+  padding: 0;
+  border-radius: 50%;
+  background-color: var(--dark-0);
+  
+  > img {
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 1px 3px 6px 1px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .popup {
+    max-width: 250px;
+  }
 }
