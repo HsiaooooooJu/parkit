@@ -1,8 +1,10 @@
 .quick-container {
   width: 100%;
+  height: calc(100vh - 50px - 7.5rem);
+  overflow-y: auto;
   min-width: 300px;
   max-width: 768px;
-  margin: 60px auto 0 auto;
+  margin: 50px auto 0 auto;
   padding: 1rem;
 
   &_title {
@@ -73,6 +75,12 @@
       &_img {
         width: 50px;
         margin: 5px 10px 5px 0;
+      }
+
+      &_round-img {
+        width: 60px;
+        margin: 5px 10px 5px -5px;
+        box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.15);
       }
 
       &_text {
