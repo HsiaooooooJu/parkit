@@ -1,23 +1,33 @@
 {
   "files": {
-    "main.css": "/parkit/static/css/main.fd1bb163.css",
-    "main.js": "/parkit/static/js/main.6f8a0051.js",
-    "static/media/retro.png": "/parkit/static/media/retro.b1f8e483da7e1641d0e8.png",
-    "static/media/silver.png": "/parkit/static/media/silver.8d96ffd194311b849567.png",
-    "static/media/main.svg": "/parkit/static/media/main.5b0d59c9c6ab94bdd3873e28b4f499e2.svg",
+    "main.css": "/parkit/static/css/main.6d725a17.css",
+    "main.js": "/parkit/static/js/main.584b2939.js",
+    "static/media/Tradition.png": "/parkit/static/media/Tradition.23d03be9a3b71fcbd720.png",
+    "static/media/Default.png": "/parkit/static/media/Default.50d5c8db37b966068a0a.png",
+    "static/media/main.svg": "/parkit/static/media/main.5e0cf07830965cf6e0a606ee26757d0b.svg",
     "static/media/logo-1.svg": "/parkit/static/media/logo-1.fe579da6d83c35d0fc6b3666f0480836.svg",
     "static/media/logo-2.svg": "/parkit/static/media/logo-2.71d47bc22989ef22070389567352a77d.svg",
+    "static/media/car.svg": "/parkit/static/media/car.eae2501234cae3de4a64eb3c9b473d58.svg",
+    "static/media/show-all.svg": "/parkit/static/media/show-all.298eba28a0d40291d271a731e6b91fde.svg",
+    "static/media/arrow.svg": "/parkit/static/media/arrow.13aa984414b5eae606dcb5d30ad79be6.svg",
     "index.html": "/parkit/index.html",
+    "static/media/blue-stall.svg": "/parkit/static/media/blue-stall.b4c4ae6f2fd1c000a7c4123fc1602eea.svg",
+    "static/media/blue-pin.svg": "/parkit/static/media/blue-pin.cd642bf8f10e770eb4c48ac065071fcb.svg",
+    "static/media/pin-orange.svg": "/parkit/static/media/pin-orange.4f01360c6c0fb1a3bd4c8a0893aee486.svg",
     "static/media/location.svg": "/parkit/static/media/location.07e7003447cbad70d5adabe31305c270.svg",
     "static/media/close.svg": "/parkit/static/media/close.a2b66d59e24576e22729700304353e40.svg",
-    "static/media/park-stall.svg": "/parkit/static/media/park-stall.00f11e4dda98a5d3d2947a60ceeb12f6.svg",
-    "static/media/pin-orange.svg": "/parkit/static/media/pin-orange.1cf54187f02af14fe0ddd675375dc2fe.svg",
+    "static/media/green-pin.svg": "/parkit/static/media/green-pin.aa793ed4931e984b533c51666e4e49aa.svg",
+    "static/media/green-stall.svg": "/parkit/static/media/green-stall.7fceace785c7e748fdbe5efd35aa31f0.svg",
+    "static/media/red-pin.svg": "/parkit/static/media/red-pin.79420257c40866f6edaa8fdcaf4800ec.svg",
+    "static/media/red-stall.svg": "/parkit/static/media/red-stall.911c106bf93dcf53b0fff8b570f85aa3.svg",
+    "static/media/cloud-l.svg": "/parkit/static/media/cloud-l.b9b54c4d06aeba551ccc9413121a44e0.svg",
     "static/media/navbar.svg": "/parkit/static/media/navbar.4bac4cf3120ce46741129e42a9aebdb1.svg",
-    "main.fd1bb163.css.map": "/parkit/static/css/main.fd1bb163.css.map",
-    "main.6f8a0051.js.map": "/parkit/static/js/main.6f8a0051.js.map"
+    "static/media/cloud-s.svg": "/parkit/static/media/cloud-s.3ac8145941bd7d79eb96c50c35268ce0.svg",
+    "main.6d725a17.css.map": "/parkit/static/css/main.6d725a17.css.map",
+    "main.584b2939.js.map": "/parkit/static/js/main.584b2939.js.map"
   },
   "entrypoints": [
-    "static/css/main.fd1bb163.css",
-    "static/js/main.6f8a0051.js"
+    "static/css/main.6d725a17.css",
+    "static/js/main.584b2939.js"
   ]
 }
