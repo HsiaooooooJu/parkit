@@ -2,8 +2,8 @@ import { MapContainer, TileLayer, LayersControl } from 'react-leaflet'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { converter } from '../utils/converter'
-import osm from '../utils/osmProvider'
+import { converter } from '../utils/Converter'
+import osm from '../utils/OsmProvider'
 import { fetchAllPark, fetchAllRemain } from '../apis/ParkingAPI'
 
 import LocationMarker from '../components/LocationMarker'
@@ -54,7 +54,7 @@ export default function Parking() {
           return navigate('/')
         })
       setIsLoading(false)
-    }, 3500)
+    }, 3000)
     return () => clearTimeout(timer)
   }, [])
 
@@ -96,13 +96,16 @@ export default function Parking() {
           <TileLayer attribution={osm.tradition.attribution} url={osm.tradition.url} />
         </BaseLayer>
       </LayersControl>
-      {/* all the parking lots pin */}
+
       <ShowAllBtn
         isClicked={isClicked}
         handleShowAll={handleShowAll}
         isLoading={isLoading}
       />
+
+      {/* all the parking lots pin */}
       {content}
+
       <LocationMarker
         center={center}
         passData={passData}
