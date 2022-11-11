@@ -1,7 +1,9 @@
 .about_container {
   width: 100%;
+  height: calc(100vh - 50px - 7.5rem);
+  overflow-y: auto;
   min-width: 300px;
-  margin: 60px auto 0 auto;
+  margin: 50px auto 0 auto;
   padding: 1rem;
 
   &_title {
@@ -43,6 +45,7 @@
   .about_container {
     max-width: 768px;
     padding: 2.5rem 1rem;
+    height: calc(100vh - 50px - 10rem);
 
     &_title {
       font-size: 1.6rem;

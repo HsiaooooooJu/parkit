@@ -1,7 +1,9 @@
 .setting-container {
   width: 100%;
   min-width: 300px;
-  margin: 60px auto 0 auto;
+  height: calc(100vh - 50px - 7.5rem);
+  overflow-y: auto;
+  margin: 50px auto 0 auto;
   padding: 1rem;
 
   &_title {
@@ -33,6 +35,19 @@
 @media screen and (min-width: 550px) {
   .setting-container {
     max-width: 768px;
+    height: calc(100vh - 50px - 10rem);
+
+    &_title {
+      padding: 2.5rem 0 0;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    &_text {
+      margin: 1rem 0 2.5rem ;
+      font-size: 1.3rem;
+    }
+
 
     &_title {
       padding: 2.5rem 0 0;
