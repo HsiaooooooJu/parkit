@@ -37,15 +37,16 @@ export default function Parking() {
             return {
               id: item.id,
               name: item.name,
-              address: item.address,
-              tel: item.tel,
-              payex: item.payex,
+              address: item.address.length ? item.address : '無資料',
+              tel: item.tel ? item.tel : '無資料',
+              payex: item.payex ? item.payex : '無資料',
               latlng,
-              serviceTime: item.serviceTime,
+              serviceTime: item.serviceTime ? item.serviceTime : '無資料',
               totalCar: item.totalcar,
-              availableCar: spaces ? spaces.availablecar : 0
+              availableCar: spaces ? spaces.availablecar : '無資料'
             }
           })
+          console.log(parks)
           setResPark(parks)
         })
         .catch((error) => {
