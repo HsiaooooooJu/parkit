@@ -64,28 +64,21 @@
 }
 
 .map-container {
-  &_locate, &_show-all {
+  &_locate {
     position: fixed;
     z-index: 500;
     left: 0;
     margin-left: 20px;
     padding: 0;
-    border-radius: 50%;
     background-color: var(--dark-0);
-    box-shadow: 1px 3px 6px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 3px 6px 1px rgba(0, 0, 0, 0.2);
   }
 
   &_locate {
     bottom: 125px;
     width: 45px;
     height: 45px;
-  }
-
-  &_show-all {
-    bottom: 185px;
-    width: 45px;
-    height: 45px;
-    background-color: var(--dark-0);
+    border-radius: 50%;
   }
 }
 

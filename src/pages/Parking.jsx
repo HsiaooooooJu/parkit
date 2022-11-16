@@ -9,7 +9,7 @@ import { fetchAllPark, fetchAllRemain } from '../apis/ParkingAPI'
 import LocationMarker from '../components/LocationMarker'
 import Loading from '../components/Loading'
 import AllMarker from '../components/AllMarker'
-import ShowAllBtn from '../components/ShowAllBtn'
+import FilterBtn from '../components/FilterBtn'
 
 const { BaseLayer } = LayersControl
 
@@ -20,7 +20,7 @@ export default function Parking() {
 
   const [allPark, setResPark] = useState([])
   const [isClicked, setIsClicked] = useState(false)
-  const handleShowAll = () => {
+  const handleFilter = () => {
     setIsClicked(!isClicked)
   }
   const navigate = useNavigate()
@@ -46,7 +46,6 @@ export default function Parking() {
               availableCar: spaces ? spaces.availablecar : '無資料'
             }
           })
-          console.log(parks)
           setResPark(parks)
         })
         .catch((error) => {
@@ -55,7 +54,7 @@ export default function Parking() {
           return navigate('/')
         })
       setIsLoading(false)
-    }, 3000)
+    }, 1500)
     return () => clearTimeout(timer)
   }, [])
 
@@ -98,9 +97,9 @@ export default function Parking() {
         </BaseLayer>
       </LayersControl>
 
-      <ShowAllBtn
+      <FilterBtn
         isClicked={isClicked}
-        handleShowAll={handleShowAll}
+        handleFilter={handleFilter}
         isLoading={isLoading}
       />
 

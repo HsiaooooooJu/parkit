@@ -31,21 +31,21 @@
 
   &_title {
     position: absolute;
-    top: 40%;
+    top: 35%;
     width: 100%;
     margin: 0;
     padding: 0;
     color: var(--blue-80);
     text-align: center;
     white-space: nowrap;
-    font-size: 38px;
+    font-size: 2.5rem;
     letter-spacing: 1px;
     animation: skew 8s infinite ease-in-out;
   }
 
   &_car {
     position: absolute;
-    bottom: 19.4vh;
+    bottom: 19.5vh;
     left: 25%;
     width: 270px;
   }
@@ -53,16 +53,30 @@
   &_block {
     position: absolute;
     bottom: 0;
+    display: flex;
+    align-items: center;
     width: 100%;
     height: 20vh;
     background-color: var(--secondary);
 
+    > a {
+      display: flex;
+      align-items: center;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
     &_arrow {
-      position: absolute;
-      bottom: 5.5vh;
-      left: 18%;
-      transform: translateX(-50%);
       width: 60px;
+      margin: 1rem;
+    }
+
+    &_text {
+      padding-bottom: 6px;
+      color: var(--dark-0);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 2px;
     }
   }
 }
@@ -99,7 +113,7 @@
   }
 }
 
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 720px) {
   .not-found {
 
     &_cloud {
@@ -110,6 +124,33 @@
 
       &_large {
         left: 50%;
+      }
+    }
+
+    &_title {
+      font-size: 3rem;
+    }
+
+    &_car {
+      left: 55%;
+    }
+
+    &_block {
+
+      > a {
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      &_arrow {
+        width: 70px;
+        margin: 2rem;
+      }
+
+      &_text {
+        padding-bottom: 10px;
+        font-size: 2rem;
       }
     }
   }

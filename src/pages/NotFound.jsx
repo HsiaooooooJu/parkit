@@ -15,6 +15,7 @@ export default function NotFound() {
         <div className='not-found_block'>
           <Link to='/'>
             <img src={arrow} className='not-found_block_arrow' />
+            <span className="not-found_block_text">BACK</span>
           </Link>
         </div>
       </div>

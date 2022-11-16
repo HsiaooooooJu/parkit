@@ -75,7 +75,6 @@
     transform: translateY(-50%);
     width: 35px;
     padding: 0.5rem;
-    cursor: pointer;
     transition: background-color 0.2s ease-in-out;
   }
 }
@@ -88,7 +87,7 @@
   .nav-container {
     justify-content: space-between;
     height: 70px;
-    max-width: 768px;
+    max-width: 1024px;
     margin: 0 auto;
 
     &_logo {

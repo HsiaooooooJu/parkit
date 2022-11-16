@@ -37,22 +37,24 @@ export default function AllMarker(props) {
     }
   })
 
-  // filter by availability
-  const available = props.allPark.map((item) => {
-    if (item.availableCar === 0) return
-    if (item.availableCar > 10) {
-      icon = greenPin
-      return <FilterMarker key={item.id} item={item} icon={icon} />
-    } else if (item.availableCar < 10) {
-      icon = bluePin
-      return <FilterMarker key={item.id} item={item} icon={icon} />
-    } else if (item.availableCar === '無資料') {
-      icon = grayPin
-      return <FilterMarker key={item.id} item={item} icon={icon} />
-    }
-  })
-  return props.isClicked ? <>{available}</> : <>{allNearby}</>
+  // // filter by availability
+  // const available = props.allPark.map((item) => {
+  //   if (item.availableCar === 0) return
+  //   if (item.availableCar > 10) {
+  //     icon = greenPin
+  //     return <FilterMarker key={item.id} item={item} icon={icon} />
+  //   } else if (item.availableCar < 10) {
+  //     icon = bluePin
+  //     return <FilterMarker key={item.id} item={item} icon={icon} />
+  //   } else if (item.availableCar === '無資料') {
+  //     icon = grayPin
+  //     return <FilterMarker key={item.id} item={item} icon={icon} />
+  //   }
+  // })
+  return <>{allNearby}</>
 }
+
+// props.isClicked ? <>{available}</> : 
 
 function FilterMarker({ item, icon }) {
   return (
@@ -63,5 +65,3 @@ function FilterMarker({ item, icon }) {
     </Marker>
   )
 }
-
-// console.log(props.allPark[1103].address.replaceAll("é‡é™½è·¯63è™Ÿæ—ç©ºåœ°", " "))
