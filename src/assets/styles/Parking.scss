@@ -1,12 +1,9 @@
 .popup {
   width: 230px;
-  
-  > a {
-    color: var(--blue-60);
-  }
 
   &_title {
     padding-bottom: 4px;
+    color: var(--blue-80);
     font-size: 1rem;
     font-weight: 700;
     letter-spacing: 0.05rem;
@@ -27,7 +24,7 @@
       }
 
       &_num {
-        color: var(--blue-80);
+        color: var(--blue-60);
         font-size: 0.9rem;
         font-weight: 700;
         letter-spacing: 1px;
@@ -47,10 +44,39 @@
     }
 
     &_body {
-      color: var(--dark-100);
+      color: var(--dark-80);
       font-size: 0.8rem;
-      font-weight: 400;
+      font-weight: 500;
       letter-spacing: 0.5px;
+    }
+  }
+
+  &_detail_group {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    &_btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
+      margin-right: -6px;
+      height: 32px;
+      border-radius: 2rem;
+      background-color: var(--blue-60);
+
+      &_img {
+        width: 15px;
+      }
+
+      &_text {
+        margin-right: 5px;
+        padding-bottom: 1px;
+        color: var(--dark-0);
+        font-size: 0.75rem;
+        font-weight: 400;
+      }
     }
   }
 }
