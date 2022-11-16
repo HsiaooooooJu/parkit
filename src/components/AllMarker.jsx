@@ -1,4 +1,4 @@
-import { greenPin, redPin, bluePin } from '../components/Icons'
+import { greenPin, redPin, bluePin, grayPin } from '../components/Icons'
 import { Marker, Popup, useMap } from 'react-leaflet'
 import PopupContent from '../components/PopupContent'
 
@@ -6,6 +6,8 @@ export default function AllMarker(props) {
   const mapTile = useMap()
   const currentLat = props.currentPosition.lat
   const currentLng = props.currentPosition.lng
+
+  let icon
 
   // filter by nearby
   const nearby = props.allPark.reduce((acc, item) => {
@@ -19,90 +21,47 @@ export default function AllMarker(props) {
     return acc
   }, [])
 
-  const many = nearby
-    .filter((item) => {
-      if (item.availableCar > 10) {
-        return item
-      }
-    })
-    .map((item) => (
-      <Marker key={item.id} position={[item.latlng.lat, item.latlng.lng]} icon={greenPin}>
-        <Popup>
-          <PopupContent item={item} />
-        </Popup>
-      </Marker>
-    ))
-
-  const some = nearby
-    .filter((item) => {
-      if (item.availableCar < 10 && item.availableCar !== 0) {
-        return item
-      }
-    })
-    .map((item) => (
-      <Marker key={item.id} position={[item.latlng.lat, item.latlng.lng]} icon={bluePin}>
-        <Popup>
-          <PopupContent item={item} />
-        </Popup>
-      </Marker>
-    ))
-
-  const empty = nearby
-    .filter((item) => {
-      if (item.availableCar === 0) {
-        return item
-      }
-    })
-    .map((item) => (
-      <Marker key={item.id} position={[item.latlng.lat, item.latlng.lng]} icon={redPin}>
-        <Popup>
-          <PopupContent item={item} />
-        </Popup>
-      </Marker>
-    ))
+  const allNearby = nearby.map((item) => {
+    if (item.availableCar > 10) {
+      icon = greenPin
+      return <FilterMarker key={item.id} item={item} icon={icon} />
+    } else if (item.availableCar < 10 && item.availableCar !== 0) {
+      icon = bluePin
+      return <FilterMarker key={item.id} item={item} icon={icon} />
+    } else if (item.availableCar === 0) {
+      icon = redPin
+      return <FilterMarker key={item.id} item={item} icon={icon} />
+    } else if (item.availableCar === '無資料') {
+      icon = grayPin
+      return <FilterMarker key={item.id} item={item} icon={icon} />
+    }
+  })
 
   // filter by availability
-  const available = props.allPark.filter((item) => {
-    return item.availableCar !== 0
+  const available = props.allPark.map((item) => {
+    if (item.availableCar === 0) return
+    if (item.availableCar > 10) {
+      icon = greenPin
+      return <FilterMarker key={item.id} item={item} icon={icon} />
+    } else if (item.availableCar < 10) {
+      icon = bluePin
+      return <FilterMarker key={item.id} item={item} icon={icon} />
+    } else if (item.availableCar === '無資料') {
+      icon = grayPin
+      return <FilterMarker key={item.id} item={item} icon={icon} />
+    }
   })
-  const manyAvailable = available
-    .filter((item) => {
-      if (item.availableCar < 10) {
-        return item
-      }
-    })
-    .map((item) => (
-      <Marker key={item.id} position={[item.latlng.lat, item.latlng.lng]} icon={bluePin}>
-        <Popup>
-          <PopupContent item={item} />
-        </Popup>
-      </Marker>
-    ))
+  return props.isClicked ? <>{available}</> : <>{allNearby}</>
+}
 
-  const someAvailable = available
-    .filter((item) => {
-      if (item.availableCar > 10) {
-        return item
-      }
-    })
-    .map((item) => (
-      <Marker key={item.id} position={[item.latlng.lat, item.latlng.lng]} icon={greenPin}>
-        <Popup>
-          <PopupContent item={item} />
-        </Popup>
-      </Marker>
-    ))
-
-  return props.isClicked ? (
-    <>
-      {manyAvailable}
-      {someAvailable}
-    </>
-  ) : (
-    <>
-      {many}
-      {some}
-      {empty}
-    </>
+function FilterMarker({ item, icon }) {
+  return (
+    <Marker position={[item.latlng.lat, item.latlng.lng]} icon={icon}>
+      <Popup>
+        <PopupContent item={item} />
+      </Popup>
+    </Marker>
   )
 }
+
+// console.log(props.allPark[1103].address.replaceAll("é‡é™½è·¯63è™Ÿæ—ç©ºåœ°", " "))
