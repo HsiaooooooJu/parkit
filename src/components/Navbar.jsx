@@ -9,7 +9,6 @@ import close from '../assets/images/close.svg'
 export default function Navbar() {
   const [isExpanded, setIsExpanded] = useState(false)
   const toggle = () => setIsExpanded(!isExpanded)
-  const blur = () => setIsExpanded(false)
 
   return (
     <nav className='nav'>
@@ -24,7 +23,7 @@ export default function Navbar() {
             <img src={hamburger} alt='hamburger' />
           )}
         </button>
-        <div className={isExpanded ? 'nav-container_backdrop expanded' : ''} onClick={blur}>
+        <div className={isExpanded ? 'nav-container_backdrop expanded' : ''} onClick={() => setIsExpanded(false)}>
           <div
             className={isExpanded ? 'nav-container_list expanded' : 'nav-container_list'}
           >

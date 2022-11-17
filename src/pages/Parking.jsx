@@ -17,13 +17,13 @@ export default function Parking() {
   const center = { lat: 25.0504753, lng: 121.545543 }
   const [currentPosition, setCurrentPosition] = useState(center)
   const [isLoading, setIsLoading] = useState(true)
-
   const [allPark, setResPark] = useState([])
-  const [isClicked, setIsClicked] = useState(false)
-  const handleFilter = () => {
-    setIsClicked(!isClicked)
-  }
   const navigate = useNavigate()
+
+  // state for filterBtn
+  const [isClicked, setIsClicked] = useState(false)
+  const [isSelected, setIsSelected] = useState({remain: 'many', nearby: '300m'})
+
 
   useEffect(() => {
     setIsLoading(true)
@@ -76,6 +76,7 @@ export default function Parking() {
         allPark={allPark}
         currentPosition={currentPosition}
         isClicked={isClicked}
+        isSelected={isSelected}
       />
     )
   }
@@ -99,7 +100,9 @@ export default function Parking() {
 
       <FilterBtn
         isClicked={isClicked}
-        handleFilter={handleFilter}
+        setIsClicked={setIsClicked}
+        isSelected={isSelected}
+        setIsSelected={setIsSelected}
         isLoading={isLoading}
       />
 
