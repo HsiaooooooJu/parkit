@@ -21,9 +21,7 @@ export default function Parking() {
   const navigate = useNavigate()
 
   // state for filterBtn
-  const [isClicked, setIsClicked] = useState(false)
-  const [isSelected, setIsSelected] = useState({remain: 'many', nearby: '300m'})
-
+  const [isSelected, setIsSelected] = useState({remain: '', nearby: '300m'})
 
   useEffect(() => {
     setIsLoading(true)
@@ -75,7 +73,6 @@ export default function Parking() {
       <AllMarker
         allPark={allPark}
         currentPosition={currentPosition}
-        isClicked={isClicked}
         isSelected={isSelected}
       />
     )
@@ -85,7 +82,7 @@ export default function Parking() {
     <MapContainer
       center={[center.lat, center.lng]}
       zoom={16}
-      minZoom={14}
+      minZoom={13}
       scrollWheelZoom={false}
     >
       <LayersControl position='bottomright'>
@@ -99,8 +96,6 @@ export default function Parking() {
       </LayersControl>
 
       <FilterBtn
-        isClicked={isClicked}
-        setIsClicked={setIsClicked}
         isSelected={isSelected}
         setIsSelected={setIsSelected}
         isLoading={isLoading}

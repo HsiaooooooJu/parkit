@@ -4,60 +4,84 @@ import { Marker, Popup, useMap } from 'react-leaflet'
 import PopupContent from '../components/PopupContent'
 
 export default function AllMarker(props) {
+  const { allPark, currentPosition, isSelected } = props
   const mapTile = useMap()
-  const currentLat = props.currentPosition.lat
-  const currentLng = props.currentPosition.lng
+  const currentLat = currentPosition.lat
+  const currentLng = currentPosition.lng
 
   let content
   let icon
 
   // filter by nearby
-  const superNear = props.allPark.reduce((acc, item) => {
-    item.distance = mapTile.distance(
-      [currentLat, currentLng],
-      [item.latlng.lat, item.latlng.lng]
-    )
-    if (item.distance < 550) {
-      acc.push(item)
+  const distance = allPark.map((item) => {
+    return {
+      ...item,
+      distance: mapTile.distance(
+        [currentLat, currentLng],
+        [item.latlng.lat, item.latlng.lng]
+      )
     }
-    return acc
-  }, [])
+  })
 
-  
+  const superNear = distance.filter((item) => {
+    return item.distance < 300
+  })
 
-  // content = superNear.map((item) => {
-  //   if (item.availableCar > 10) {
-  //     icon = greenPin
-  //     return <FilterMarker key={item.id} item={item} icon={icon} />
-  //   } else if (item.availableCar < 10 && item.availableCar !== 0) {
-  //     icon = bluePin
-  //     return <FilterMarker key={item.id} item={item} icon={icon} />
-  //   } else if (item.availableCar === 0) {
-  //     icon = redPin
-  //     return <FilterMarker key={item.id} item={item} icon={icon} />
-  //   } else if (item.availableCar === '無資料') {
-  //     icon = grayPin
-  //     return <FilterMarker key={item.id} item={item} icon={icon} />
-  //   }
-  // })
+  const quiteNear = distance.filter((item) => {
+    return item.distance < 600
+  })
+
+  if (isSelected.nearby === '300m') {
+    content = superNear.map((item) => {
+      if (item.availableCar > 10) {
+        icon = greenPin
+        return <FilterMarker key={item.id} item={item} icon={icon} />
+      } else if (item.availableCar < 10 && item.availableCar !== 0) {
+        icon = bluePin
+        return <FilterMarker key={item.id} item={item} icon={icon} />
+      } else if (item.availableCar === 0) {
+        icon = redPin
+        return <FilterMarker key={item.id} item={item} icon={icon} />
+      } else if (item.availableCar === '無資料') {
+        icon = grayPin
+        return <FilterMarker key={item.id} item={item} icon={icon} />
+      }
+    })
+  } else if (isSelected.nearby === '600m') {
+    content = quiteNear.map((item) => {
+      if (item.availableCar > 10) {
+        icon = greenPin
+        return <FilterMarker key={item.id} item={item} icon={icon} />
+      } else if (item.availableCar < 10 && item.availableCar !== 0) {
+        icon = bluePin
+        return <FilterMarker key={item.id} item={item} icon={icon} />
+      } else if (item.availableCar === 0) {
+        icon = redPin
+        return <FilterMarker key={item.id} item={item} icon={icon} />
+      } else if (item.availableCar === '無資料') {
+        icon = grayPin
+        return <FilterMarker key={item.id} item={item} icon={icon} />
+      }
+    })
+  }
 
   // filter by vacancy
-  if (props.isSelected.remain === 'many') {
-    content = props.allPark.map((item) => {
+  if (isSelected.remain === 'many') {
+    content = allPark.map((item) => {
       if (item.availableCar > 20) {
         icon = greenPin
         return <FilterMarker key={item.id} item={item} icon={icon} />
       }
     })
-  } else if (props.isSelected.remain === 'some') {
-    content = props.allPark.map((item) => {
+  } else if (isSelected.remain === 'some') {
+    content = allPark.map((item) => {
       if (item.availableCar < 10 && item.availableCar > 0) {
         icon = bluePin
         return <FilterMarker key={item.id} item={item} icon={icon} />
       }
     })
-  } else if (props.isSelected.remain === 'ignore') {
-    content = props.allPark.map((item) => {
+  } else if (isSelected.remain === 'ignore') {
+    content = allPark.map((item) => {
       if (item.availableCar <= 0) {
         icon = redPin
         return <FilterMarker key={item.id} item={item} icon={icon} />
@@ -69,8 +93,8 @@ export default function AllMarker(props) {
         return <FilterMarker key={item.id} item={item} icon={icon} />
       }
     })
-  } else if (props.isSelected.remain === 'all') {
-    content = props.allPark.map((item) => {
+  } else if (isSelected.remain === 'all') {
+    content = allPark.map((item) => {
       if (item.availableCar <= 0) {
         icon = redPin
         return <FilterMarker key={item.id} item={item} icon={icon} />
@@ -86,11 +110,8 @@ export default function AllMarker(props) {
       }
     })
   }
-  
   return <>{content}</>
 }
-
-// props.isClicked ? <>{available}</> : 
 
 function FilterMarker({ item, icon }) {
   return (

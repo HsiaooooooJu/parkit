@@ -1,8 +1,10 @@
 /*eslint-disable*/
+import { useState } from 'react'
 import filter from '../assets/images/drop-down.svg'
 
-export default function FilterBtn({ isLoading, isClicked, setIsClicked, isSelected, setIsSelected }) {
+export default function FilterBtn({ isLoading, isSelected, setIsSelected }) {
 
+  const [isClicked, setIsClicked] = useState(false)
   // clicked filter btn
   const toggleIsClicked = () => {
     setIsClicked(!isClicked)
@@ -43,17 +45,17 @@ export default function FilterBtn({ isLoading, isClicked, setIsClicked, isSelect
           <div className='filter-list_box'>
             <h4 className='filter-list_box_title'>附近停車場</h4>
             <div className='filter-list_box_group'>
-              <Radio htmlFor='300m' id='300m' value='300m' onClick={filterNearby} isSelected={isSelected}>半徑距離 300 公尺的停車場</Radio>
-              <Radio htmlFor='600m' id='600m' value='600m' onClick={filterNearby} isSelected={isSelected}>半徑距離 600 公尺的停車場</Radio>
+              <Radio htmlFor='300m' id='300m' value='300m' onClick={filterNearby} isSelected={isSelected}>距離約 300 公尺</Radio>
+              <Radio htmlFor='600m' id='600m' value='600m' onClick={filterNearby} isSelected={isSelected}>距離約 600 公尺</Radio>
             </div>
           </div>
           <div className='filter-list_box'>
             <h4 className='filter-list_box_title'>空位數量</h4>
             <div className='filter-list_box_group'>
-              <Radio htmlFor='many' id='many' value='many' onClick={filterVacancy} isSelected={isSelected}>停車場空位大於 20 個</Radio>
-              <Radio htmlFor='some' id='some' value='some' onClick={filterVacancy} isSelected={isSelected}>停車場空位 0 - 10 個</Radio>
-              <Radio htmlFor='ignore' id='ignore' value='ignore' onClick={filterVacancy} isSelected={isSelected}>忽略無空位資料的停車場</Radio>
-              <Radio htmlFor='all' id='all' value='all' onClick={filterVacancy} isSelected={isSelected}>顯示全部停車場空位資料</Radio>
+              <Radio htmlFor='many' id='many' value='many' onClick={filterVacancy} isSelected={isSelected}>空位大於 20 個</Radio>
+              <Radio htmlFor='some' id='some' value='some' onClick={filterVacancy} isSelected={isSelected}>空位 0 - 10 個</Radio>
+              <Radio htmlFor='ignore' id='ignore' value='ignore' onClick={filterVacancy} isSelected={isSelected}>忽略無資料的停車場</Radio>
+              <Radio htmlFor='all' id='all' value='all' onClick={filterVacancy} isSelected={isSelected}>顯示全部</Radio>
             </div>
           </div>
         </form>
@@ -67,7 +69,7 @@ function Radio(props) {
   const {htmlFor, id, value, onClick, children, isSelected} = props
   return (
     <>
-      <label htmlFor={htmlFor} className={isSelected.remain === value ? 'filter-list_box_group_label selected' : 'filter-list_box_group_label'}>{children}</label>
+      <label htmlFor={htmlFor} className={isSelected.remain === value || isSelected.nearby === value ? 'filter-list_box_group_label selected' : 'filter-list_box_group_label'}>{children}</label>
       <input id={id} type='radio' value={value} onClick={onClick} />
     </>
   )
