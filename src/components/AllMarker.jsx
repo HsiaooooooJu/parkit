@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import { greenPin, redPin, bluePin, grayPin } from '../components/Icons'
 import { Marker, Popup, useMap } from 'react-leaflet'
 import PopupContent from '../components/PopupContent'

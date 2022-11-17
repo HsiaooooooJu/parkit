@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import { useState } from 'react'
 import filter from '../assets/images/drop-down.svg'
 
@@ -11,12 +10,12 @@ export default function FilterBtn({ isLoading, isSelected, setIsSelected }) {
   }
 
   const filterVacancy = (e) => {
-    console.log(e.target.value)
+    setIsClicked(false)
     setIsSelected({ remain: e.target.value })
   }
 
   const filterNearby = (e) => {
-    console.log(e.target.value)
+    setIsClicked(false)
     setIsSelected({ nearby: e.target.value })
   }
 
@@ -63,7 +62,6 @@ export default function FilterBtn({ isLoading, isSelected, setIsSelected }) {
     </>
   )
 }
-
 
 function Radio(props) {
   const {htmlFor, id, value, onClick, children, isSelected} = props

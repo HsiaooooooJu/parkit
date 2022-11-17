@@ -1,3 +1,7 @@
+const option = {
+  enableHighAccuracy: true
+}
+
 export async function fetchAllPark() {
   const response = await fetch(
     'https://tcgbusfs.blob.core.windows.net/blobtcmsv/TCMSV_alldesc.json'
@@ -16,4 +20,10 @@ export async function fetchAllRemain() {
     throw new Error('無法取得剩餘車位資料，請稍後再試')
   }
   return await response.json()
+}
+
+export function getPosition() {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject, option)
+  })
 }
