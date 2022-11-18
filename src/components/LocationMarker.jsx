@@ -15,15 +15,12 @@ export default function LocateBtn({ center, passData }) {
       .then((position) => {
         const lat = position.coords.latitude
         const lng = position.coords.longitude
-        setPosition([lat, lng])
-        return position
+        return setPosition([lat, lng])
       })
       .catch((error) => {
+        map.flyTo(center)
         if (error.code === 1) {
           alert('請開啟定位功能')
-        } else {
-          map.flyTo(center)
-          alert('無法取得當前位置，請稍後再試')
         }
       })
     setIsLoading(false)
@@ -39,10 +36,8 @@ export default function LocateBtn({ center, passData }) {
       return
     } else if (
       !isLoading &&
-      (position[0] > 24 ||
-        position[0] < 25.3 ||
-        position[1] > 121.4 ||
-        position[1] < 121.7)
+      (position[0] < 24 && position[0] > 25.3 ||
+        position[1] < 121.4 && position[1] > 121.7)
     ) {
       map.flyTo(center)
       alert('您的當前位置不在台北市，地圖將顯示預設中心點')

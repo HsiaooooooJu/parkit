@@ -10,6 +10,7 @@ import LocationMarker from '../components/LocationMarker'
 import Loading from '../components/Loading'
 import AllMarker from '../components/AllMarker'
 import FilterBtn from '../components/FilterBtn'
+import SearchBtn from '../components/SearchBtn'
 
 const { BaseLayer } = LayersControl
 
@@ -17,11 +18,11 @@ export default function Parking() {
   const center = { lat: 25.0504753, lng: 121.545543 }
   const [currentPosition, setCurrentPosition] = useState(center)
   const [isLoading, setIsLoading] = useState(true)
-  const [allPark, setResPark] = useState([])
+  const [allPark, setAllPark] = useState([])
   const navigate = useNavigate()
 
   // state for filterBtn
-  const [isSelected, setIsSelected] = useState({remain: '', nearby: '300m'})
+  const [isSelected, setIsSelected] = useState({ remain: '', nearby: '300m' })
 
   useEffect(() => {
     setIsLoading(true)
@@ -29,9 +30,9 @@ export default function Parking() {
     const timer = window.setTimeout(() => {
       Promise.all([fetchAllPark(), fetchAllRemain()])
         .then(([dataPark, dataRemain]) => {
-          const parks = dataPark.data.park.map((item) => {
+          const parks = dataPark.park.map((item) => {
             const latlng = converter(item.tw97x, item.tw97y)
-            const spaces = dataRemain.data.park.find((i) => i.id === item.id)
+            const spaces = dataRemain.park.find((i) => i.id === item.id)
             return {
               id: item.id,
               name: item.name,
@@ -44,15 +45,14 @@ export default function Parking() {
               availableCar: spaces ? spaces.availablecar : '無資料'
             }
           })
-          setResPark(parks)
+          setAllPark(parks)
         })
-        .catch((error) => {
+        .catch(() => {
           alert('網路連線不穩定，請稍後再試')
-          console.log(error)
           return navigate('/')
         })
       setIsLoading(false)
-    }, 1500)
+    }, 1000)
     return () => clearTimeout(timer)
   }, [])
 
@@ -74,6 +74,7 @@ export default function Parking() {
         allPark={allPark}
         currentPosition={currentPosition}
         isSelected={isSelected}
+        // key={reload}
       />
     )
   }
@@ -104,11 +105,9 @@ export default function Parking() {
       {/* all the parking lots pin */}
       {content}
 
-      <LocationMarker
-        center={center}
-        passData={passData}
-        fetchAllRemain={fetchAllRemain}
-      />
+      <SearchBtn setCurrentPosition={setCurrentPosition} />
+
+      <LocationMarker center={center} passData={passData} />
     </MapContainer>
   )
 }

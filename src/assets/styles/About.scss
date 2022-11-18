@@ -35,8 +35,32 @@
       font-size: 0.85rem;
     }
 
+    &_text:last-child {
+      margin-bottom: 20px;
+    }
+
     &_title {
       font-weight: 500;
+    }
+  }
+
+  &_text {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  &_style {
+    display: flex;
+    justify-content: space-between;
+
+    &_box {
+      width: 48%;
+
+      &_img {
+        width: 100%;
+        min-width: 100px;
+        max-width: 220px;
+      }
     }
   }
 }
@@ -70,6 +94,36 @@
 
       &_title {
         font-weight: 500;
+      }
+    }
+
+    &_text {
+      margin: 1rem 0 2.5rem ;
+      font-size: 1.3rem;
+    }
+
+
+    &_title {
+      padding: 2.5rem 0 0;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    &_text {
+      margin: 1rem 0 2.5rem ;
+      font-size: 1.3rem;
+    }
+
+    &_style {
+      justify-content: flex-start;
+
+      &_box {
+        width: 30%;
+        min-width: 240px;
+
+        &_img {
+          padding-right: 10px;
+        }
       }
     }
   }

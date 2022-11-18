@@ -1,3 +1,6 @@
+import defaultMap from '../assets/images/Default.png'
+import tradition from '../assets/images/Tradition.png'
+
 export default function About() {
   return (
     <div className='about_container'>
@@ -17,6 +20,16 @@ export default function About() {
         <div className='about_container_box'>
           <div className='about_container_box_text'>02-0000-0000</div>
           <div className='about_container_box_text'>parkit@company.com</div>
+        </div>
+      </div>
+      <div className='about_container_title'>地圖樣式</div>
+      <p className='about_container_text'>Parkit 提供了兩種地圖樣式：</p>
+      <div className='about_container_style'>
+        <div className='about_container_style_box'>
+          <img src={defaultMap} alt='default' className='about_container_style_box_img' />
+        </div>
+        <div className='about_container_style_box'>
+          <img src={tradition} alt='tradition' className='about_container_style_box_img' />
         </div>
       </div>
     </div>

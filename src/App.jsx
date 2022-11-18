@@ -5,7 +5,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import Parking from './pages/Parking'
-import Setting from './pages/Setting'
+import Search from './pages/Search'
 import About from './pages/About'
 import QuickStart from './pages/QuickStart'
 import NotFound from './pages/NotFound'
@@ -35,7 +35,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Navigate replace to='/home' />} />
         <Route path='/home' element={wrapAll(<Home />)} />
-        <Route path='/setting' element={wrapAll(<Setting />)} />
+        <Route path='/search' element={wrapAll(<Search />)} />
         <Route path='/about-us' element={wrapAll(<About />)} />
         <Route path='/quick-nav' element={wrapAll(<QuickStart />)} />
         <Route path='/parking' element={wrap(<Parking />)} />

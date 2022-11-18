@@ -1,0 +1,18 @@
+.map-container {
+  &_locate {
+    position: fixed;
+    z-index: 500;
+    left: 0;
+    margin-left: 20px;
+    padding: 0;
+    background-color: var(--dark-0);
+    box-shadow: 1px 3px 6px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  &_locate {
+    bottom: 125px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+  }
+}

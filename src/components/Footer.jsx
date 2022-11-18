@@ -12,12 +12,12 @@ export default function Footer() {
         <div className='footer-container_wrap'>
           <div className='footer-container_block'>
             <ul className='footer-container_block_title'>停車</ul>
-            <FooterLink to='/quick-nav'>使用說明</FooterLink>
+            <FooterLink to='/search'>快速搜尋</FooterLink>
             <FooterLink to='/parking'>停車地圖</FooterLink>
           </div>
           <div className='footer-container_block'>
-            <ul className='footer-container_block_title'>設定</ul>
-            <FooterLink to='/setting'>地圖樣式</FooterLink>
+            <ul className='footer-container_block_title'>其他</ul>   
+            <FooterLink to='/quick-nav'>使用說明</FooterLink>
             <FooterLink to='/about-us'>關於我們</FooterLink>
           </div>
         </div>

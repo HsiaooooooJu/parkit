@@ -23,21 +23,24 @@ export default function Navbar() {
             <img src={hamburger} alt='hamburger' />
           )}
         </button>
-        <div className={isExpanded ? 'nav-container_backdrop expanded' : ''} onClick={() => setIsExpanded(false)}>
+        <div
+          className={isExpanded ? 'nav-container_backdrop expanded' : ''}
+          onClick={() => setIsExpanded(false)}
+        >
           <div
             className={isExpanded ? 'nav-container_list expanded' : 'nav-container_list'}
           >
-            <CustomLink to='/about-us' onClick={toggle}>
-              關於我們
-            </CustomLink>
             <CustomLink to='/quick-nav' onClick={toggle}>
               使用說明
+            </CustomLink>
+            <CustomLink to='/search' onClick={toggle}>
+              快速搜尋
             </CustomLink>
             <CustomLink to='/parking' onClick={toggle}>
               停車地圖
             </CustomLink>
-            <CustomLink to='/setting' onClick={toggle}>
-              地圖樣式
+            <CustomLink to='/about-us' onClick={toggle}>
+              關於我們
             </CustomLink>
           </div>
         </div>
