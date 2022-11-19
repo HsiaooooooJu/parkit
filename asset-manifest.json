@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/parkit/static/css/main.250f26ae.css",
-    "main.js": "/parkit/static/js/main.87a72243.js",
+    "main.css": "/parkit/static/css/main.6f3650e5.css",
+    "main.js": "/parkit/static/js/main.4e605b69.js",
     "static/media/Tradition.png": "/parkit/static/media/Tradition.23d03be9a3b71fcbd720.png",
     "static/media/Default.png": "/parkit/static/media/Default.50d5c8db37b966068a0a.png",
     "static/media/main.svg": "/parkit/static/media/main.5e0cf07830965cf6e0a606ee26757d0b.svg",
@@ -23,14 +23,15 @@
     "static/media/green-stall.svg": "/parkit/static/media/green-stall.7fceace785c7e748fdbe5efd35aa31f0.svg",
     "static/media/red-pin.svg": "/parkit/static/media/red-pin.79420257c40866f6edaa8fdcaf4800ec.svg",
     "static/media/red-stall.svg": "/parkit/static/media/red-stall.911c106bf93dcf53b0fff8b570f85aa3.svg",
+    "static/media/pin-search.svg": "/parkit/static/media/pin-search.87a3d90a484ff5eca9dd0c8c923ff030.svg",
     "static/media/cloud-l.svg": "/parkit/static/media/cloud-l.b9b54c4d06aeba551ccc9413121a44e0.svg",
     "static/media/navbar.svg": "/parkit/static/media/navbar.4bac4cf3120ce46741129e42a9aebdb1.svg",
     "static/media/cloud-s.svg": "/parkit/static/media/cloud-s.3ac8145941bd7d79eb96c50c35268ce0.svg",
-    "main.250f26ae.css.map": "/parkit/static/css/main.250f26ae.css.map",
-    "main.87a72243.js.map": "/parkit/static/js/main.87a72243.js.map"
+    "main.6f3650e5.css.map": "/parkit/static/css/main.6f3650e5.css.map",
+    "main.4e605b69.js.map": "/parkit/static/js/main.4e605b69.js.map"
   },
   "entrypoints": [
-    "static/css/main.250f26ae.css",
-    "static/js/main.87a72243.js"
+    "static/css/main.6f3650e5.css",
+    "static/js/main.4e605b69.js"
   ]
 }
