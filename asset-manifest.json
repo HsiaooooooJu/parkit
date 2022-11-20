@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/parkit/static/css/main.6f3650e5.css",
-    "main.js": "/parkit/static/js/main.4e605b69.js",
+    "main.css": "/parkit/static/css/main.214d51cc.css",
+    "main.js": "/parkit/static/js/main.159b9519.js",
     "static/media/Tradition.png": "/parkit/static/media/Tradition.23d03be9a3b71fcbd720.png",
     "static/media/Default.png": "/parkit/static/media/Default.50d5c8db37b966068a0a.png",
     "static/media/main.svg": "/parkit/static/media/main.5e0cf07830965cf6e0a606ee26757d0b.svg",
@@ -15,6 +15,7 @@
     "static/media/gray-stall.svg": "/parkit/static/media/gray-stall.60e54c3f232512dd8cf6bdd03533eb10.svg",
     "static/media/blue-stall.svg": "/parkit/static/media/blue-stall.b4c4ae6f2fd1c000a7c4123fc1602eea.svg",
     "static/media/blue-pin.svg": "/parkit/static/media/blue-pin.cd642bf8f10e770eb4c48ac065071fcb.svg",
+    "static/media/like.svg": "/parkit/static/media/like.ab17010f29452720b5bd626f22c21394.svg",
     "static/media/pin-orange.svg": "/parkit/static/media/pin-orange.4f01360c6c0fb1a3bd4c8a0893aee486.svg",
     "static/media/location.svg": "/parkit/static/media/location.07e7003447cbad70d5adabe31305c270.svg",
     "static/media/drop-down.svg": "/parkit/static/media/drop-down.21ce2fc4e263405397ccfc918eab1398.svg",
@@ -27,11 +28,11 @@
     "static/media/cloud-l.svg": "/parkit/static/media/cloud-l.b9b54c4d06aeba551ccc9413121a44e0.svg",
     "static/media/navbar.svg": "/parkit/static/media/navbar.4bac4cf3120ce46741129e42a9aebdb1.svg",
     "static/media/cloud-s.svg": "/parkit/static/media/cloud-s.3ac8145941bd7d79eb96c50c35268ce0.svg",
-    "main.6f3650e5.css.map": "/parkit/static/css/main.6f3650e5.css.map",
-    "main.4e605b69.js.map": "/parkit/static/js/main.4e605b69.js.map"
+    "main.214d51cc.css.map": "/parkit/static/css/main.214d51cc.css.map",
+    "main.159b9519.js.map": "/parkit/static/js/main.159b9519.js.map"
   },
   "entrypoints": [
-    "static/css/main.6f3650e5.css",
-    "static/js/main.4e605b69.js"
+    "static/css/main.214d51cc.css",
+    "static/js/main.159b9519.js"
   ]
 }
