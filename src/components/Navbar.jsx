@@ -33,8 +33,8 @@ export default function Navbar() {
             <CustomLink to='/quick-nav' onClick={toggle}>
               使用說明
             </CustomLink>
-            <CustomLink to='/search' onClick={toggle}>
-              快速搜尋
+            <CustomLink to='/fav-park' onClick={toggle}>
+              我的最愛
             </CustomLink>
             <CustomLink to='/parking' onClick={toggle}>
               停車地圖

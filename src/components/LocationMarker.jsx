@@ -36,11 +36,11 @@ export default function LocateBtn({ center, passData }) {
       return
     } else if (
       !isLoading &&
-      (position[0] < 24 && position[0] > 25.3 ||
-        position[1] < 121.4 && position[1] > 121.7)
+      ((position[0] < 24 && position[0] > 25.3) ||
+        (position[1] < 121.4 && position[1] > 121.7))
     ) {
       map.flyTo(center)
-      alert('您的當前位置不在台北市，地圖將顯示預設中心點')
+      alert('您的當前位置離台北市有段距離，地圖將顯示預設中心點')
       passData(center)
       return
     } else if (!isLoading && position.length > 0) {

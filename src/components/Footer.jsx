@@ -12,7 +12,7 @@ export default function Footer() {
         <div className='footer-container_wrap'>
           <div className='footer-container_block'>
             <ul className='footer-container_block_title'>停車</ul>
-            <FooterLink to='/search'>快速搜尋</FooterLink>
+            <FooterLink to='/FavPark'>我的最愛</FooterLink>
             <FooterLink to='/parking'>停車地圖</FooterLink>
           </div>
           <div className='footer-container_block'>

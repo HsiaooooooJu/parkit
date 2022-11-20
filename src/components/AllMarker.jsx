@@ -1,22 +1,28 @@
 import { greenPin, redPin, bluePin, grayPin } from '../components/Icons'
 import { Marker, Popup, useMap } from 'react-leaflet'
 import PopupContent from '../components/PopupContent'
+import Loading from './Loading'
+import { useContext } from 'react'
+import { ParkingContext } from '../context/ParkingContext'
 
 export default function AllMarker(props) {
-  const { allPark, currentPosition, isSelected } = props
+  const { allPark, isLoading } = useContext(ParkingContext)
+  const { currentPosition, isSelected } = props
   const mapTile = useMap()
-  const currentLat = currentPosition.lat
-  const currentLng = currentPosition.lng
-
+  
   let content
   let icon
+
+  if (isLoading && allPark.length === 0) {
+    return (content = <Loading />)
+  }
 
   // filter by nearby
   const distance = allPark.map((item) => {
     return {
       ...item,
       distance: mapTile.distance(
-        [currentLat, currentLng],
+        [currentPosition.lat, currentPosition.lng],
         [item.latlng.lat, item.latlng.lng]
       )
     }

@@ -1,11 +1,13 @@
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import './App.scss'
 
+import { ParkingProvider } from './context/ParkingContext'
+
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import Parking from './pages/Parking'
-import Search from './pages/Search'
+import FavPark from './pages/FavPark'
 import About from './pages/About'
 import QuickStart from './pages/QuickStart'
 import NotFound from './pages/NotFound'
@@ -32,15 +34,17 @@ function App() {
 
   return (
     <HashRouter>
-      <Routes>
-        <Route path='/' element={<Navigate replace to='/home' />} />
-        <Route path='/home' element={wrapAll(<Home />)} />
-        <Route path='/search' element={wrapAll(<Search />)} />
-        <Route path='/about-us' element={wrapAll(<About />)} />
-        <Route path='/quick-nav' element={wrapAll(<QuickStart />)} />
-        <Route path='/parking' element={wrap(<Parking />)} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
+      <ParkingProvider>
+        <Routes>
+          <Route path='/' element={<Navigate replace to='/home' />} />
+          <Route path='/home' element={wrapAll(<Home />)} />
+          <Route path='/quick-nav' element={wrapAll(<QuickStart />)} />
+          <Route path='/fav-park' element={wrapAll(<FavPark />)} />
+          <Route path='/parking' element={wrap(<Parking />)} />
+          <Route path='/about-us' element={wrapAll(<About />)} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </ParkingProvider>
     </HashRouter>
   )
 }
