@@ -29,7 +29,7 @@ export default function SearchBtn({ setCurrentPosition }) {
     searchLabel: '請輸入地址',
     notFoundMessage: '找不到結果',
     autoComplete: true,
-    autoCompleteDelay: 150,
+    autoCompleteDelay: 100,
     marker: { icon }
   })
 

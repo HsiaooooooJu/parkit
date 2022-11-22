@@ -39,7 +39,7 @@
   top: 130px;
   left: 20px;
   display: none;
-  padding: 25px 0 20px;
+  padding: 20px 0 15px;
   width: calc(100% - 40px);
   min-width: 280px;
   max-width: 330px;
@@ -109,8 +109,8 @@
   .filter-container {
     top: 88px;
     width: 105px;
-    height: 40px;
-    padding: 0.5rem 0.4rem 0.5rem 0.8rem;
+    height: 38px;
+    padding: 0.4rem 0.4rem 0.4rem 0.8rem;
 
     &_title {
       font-size: 1rem;
@@ -119,6 +119,7 @@
   .filter-list {
     top: 140px;
     max-width: 360px;
+    padding: 5px 0 15px;
 
     &_box {
       width: 100%;

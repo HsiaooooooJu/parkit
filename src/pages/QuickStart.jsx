@@ -16,7 +16,7 @@ export default function QuickStart() {
       <div className='quick-container_card'>
         <img src={locationBtn} className='quick-container_card_round-img' />
         <div className='quick-container_card_text'>
-          定位現在位置，並尋找直徑 550 公尺範圍內的所有停車場
+          定位現在位置，並尋找 300 公尺範圍內的所有停車場
         </div>
       </div>
     </div>

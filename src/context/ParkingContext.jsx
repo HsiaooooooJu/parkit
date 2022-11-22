@@ -8,12 +8,16 @@ export const ParkingContext = createContext()
 export function ParkingProvider(props) {
   const [allPark, setAllPark] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-
+  const LOCAL_STORAGE = 'likes'
+  const [likes, setLikes] = useState(() => {
+    // get localStorage data if exist
+    return JSON.parse(localStorage.getItem(LOCAL_STORAGE)) || []
+  })
   const navigate = useNavigate()
 
+  // fetch parking lots data
   useEffect(() => {
     setIsLoading(true)
-
     const timer = window.setTimeout(() => {
       Promise.all([fetchAllPark(), fetchAllRemain()])
         .then(([dataPark, dataRemain]) => {
@@ -22,14 +26,13 @@ export function ParkingProvider(props) {
             const spaces = dataRemain.park.find((i) => i.id === item.id)
             return {
               id: item.id,
-              area: item.area,
               name: item.name,
               address: item.address.length ? item.address : '無資料',
               tel: item.tel ? item.tel : '無資料',
               payex: item.payex ? item.payex : '無資料',
               latlng,
               serviceTime: item.serviceTime ? item.serviceTime : '無資料',
-              totalCar: item.totalcar,
+              totalCar: item.totalcar ? item.totalcar : '無資料',
               availableCar: spaces ? spaces.availablecar : '無資料'
             }
           })
@@ -44,9 +47,29 @@ export function ParkingProvider(props) {
     return () => clearTimeout(timer)
   }, [])
 
+  // add/remove like
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE, JSON.stringify(likes))
+  }, [likes])
+
+  function addLike(likes) {
+    setLikes((prevLikes) => {
+      return prevLikes.concat(likes)
+    })
+  }
+  function removeLike(id) {
+    setLikes((prevLikes) => {
+      return prevLikes.filter((i) => i.id !== id)
+    })
+    localStorage.setItem(LOCAL_STORAGE, JSON.stringify(likes))
+  }
+  function itemIsLike(id) {
+    return likes.some((i) => i.id === id)
+  }
+
   return (
     <ParkingContext.Provider
-      value={{ allPark, isLoading }}
+      value={{ allPark, isLoading, likes, addLike, removeLike, itemIsLike }}
     >
       {props.children}
     </ParkingContext.Provider>

@@ -2,6 +2,7 @@
 .leaflet-control-geosearch *,
 .leaflet-control-geosearch *:before,
 .leaflet-control-geosearch *:after {
+  
   box-sizing: border-box;
   border-radius: 0 0 1.2rem 1.2rem;
 }
@@ -108,7 +109,6 @@
 .leaflet-control-geosearch form input {
   min-width: 240px;
   width: 100%;
-  outline: none;
   margin: 0;
   padding: 0;
   font-size: 12px;
@@ -192,7 +192,7 @@
 
 .leaflet-geosearch-bar form {
   position: relative;
-  top: 15px;
+  margin-top: 15px;
   left: 0;
   display: block;
   border-radius: 1.2rem;
@@ -243,7 +243,7 @@
     position: absolute;
     top: 14px;
     width: 400px;
-    margin-left: calc(100% - 450px);
+    margin-left: calc(100% - 435px);
   }
   
   .leaflet-geosearch-bar form {

@@ -37,6 +37,7 @@ li {
 
 button,
 button:focus,
+input:focus,
 a:focus {
   outline: 0px !important;
   -webkit-appearance: none;
@@ -72,4 +73,9 @@ input[type="radio"] {
 
 button:disabled {
   filter: grayscale(100%) brightness(120%);
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
 }
