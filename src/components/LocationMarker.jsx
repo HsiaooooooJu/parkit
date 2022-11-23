@@ -15,7 +15,8 @@ export default function LocateBtn({ center, passData }) {
       .then((position) => {
         const lat = position.coords.latitude
         const lng = position.coords.longitude
-        return setPosition([lat, lng])
+        localStorage.setItem('position', JSON.stringify({ lat, lng }))
+        return setPosition({ lat, lng })
       })
       .catch((error) => {
         map.flyTo(center)
@@ -27,29 +28,23 @@ export default function LocateBtn({ center, passData }) {
   }, [])
 
   function handleClick() {
-    if (position === null) {
-      map.flyTo(center)
-      alert('無法取得當前位置，請稍後再試')
-      return
-    } else if (isLoading) {
+    if (position === null || isLoading) {
       map.flyTo(center)
       return
     } else if (
       !isLoading &&
-      ((position[0] < 24 && position[0] > 25.3) ||
-        (position[1] < 121.4 && position[1] > 121.7))
+      (position.lat < 24 ||
+        position.lat > 25.3 ||
+        position.lng < 121.4 ||
+        position.lng > 121.7)
     ) {
       map.flyTo(center)
       alert('您的當前位置離台北市有段距離，地圖將顯示預設中心點')
       passData(center)
       return
-    } else if (!isLoading && position.length > 0) {
-      map.flyTo(position)
-      const location = {
-        lat: position[0],
-        lng: position[1]
-      }
-      passData(location)
+    } else if (!isLoading) {
+      map.flyTo([position.lat, position.lng])
+      passData(position)
     }
   }
 

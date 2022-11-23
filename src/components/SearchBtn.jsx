@@ -29,7 +29,7 @@ export default function SearchBtn({ setCurrentPosition }) {
     searchLabel: '請輸入地址',
     notFoundMessage: '找不到結果',
     autoComplete: true,
-    autoCompleteDelay: 100,
+    autoCompleteDelay: 200,
     marker: { icon }
   })
 
@@ -39,10 +39,9 @@ export default function SearchBtn({ setCurrentPosition }) {
   mapTile.on('geosearch/showlocation', searchEventHandler)
 
   useEffect(() => {
-    if (!mapTile) return
     mapTile.addControl(searchControl)
-    return () => {
-      mapTile.removeControl(searchControl)
-    }
+    return () => mapTile.removeControl(searchControl)
   }, [])
+
+  return null
 }

@@ -12,11 +12,13 @@ const { BaseLayer } = LayersControl
 
 export default function Parking() {
   const center = { lat: 25.0504753, lng: 121.545543 }
-  const [currentPosition, setCurrentPosition] = useState(center)
+  const [currentPosition, setCurrentPosition] = useState(() => {
+    return JSON.parse(localStorage.getItem('position')) || center
+  })
   const [style, setStyle] = useState(() => {
     return JSON.parse(localStorage.getItem('mapStyle')) || 'Default'
   })
-  
+
   // state for filterBtn
   const [isSelected, setIsSelected] = useState({ remain: '', nearby: '300m' })
 
@@ -25,7 +27,7 @@ export default function Parking() {
     setCurrentPosition(data)
   }
 
-  const whenReadyHandler = event => {
+  const whenReadyHandler = (event) => {
     const baseLayerChange = (e) => {
       setStyle(e.name)
     }
@@ -39,7 +41,7 @@ export default function Parking() {
 
   let map
 
-  if(style === 'Tradition') {
+  if (style === 'Tradition') {
     map = (
       <>
         <BaseLayer name='Default'>
@@ -67,9 +69,9 @@ export default function Parking() {
 
   return (
     <MapContainer
-      center={[center.lat, center.lng]}
+      center={[currentPosition.lat, currentPosition.lng]}
       zoom={16}
-      minZoom={13}
+      minZoom={14}
       scrollWheelZoom={false}
       whenReady={whenReadyHandler}
     >
@@ -77,14 +79,11 @@ export default function Parking() {
         {map}
       </LayersControl>
 
-      <FilterBtn
-        isSelected={isSelected}
-        setIsSelected={setIsSelected}
-      />
+      <FilterBtn isSelected={isSelected} setIsSelected={setIsSelected} />
 
       <AllMarker currentPosition={currentPosition} isSelected={isSelected} />
 
-      <SearchBtn setCurrentPosition={setCurrentPosition} />
+      <SearchBtn setCurrentPosition={setCurrentPosition} position='bottomright' />
 
       <LocationMarker center={center} passData={passData} />
     </MapContainer>
