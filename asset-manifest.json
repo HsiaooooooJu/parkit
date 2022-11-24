@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/parkit/static/css/main.0dcac4e4.css",
-    "main.js": "/parkit/static/js/main.27e3ce24.js",
+    "main.js": "/parkit/static/js/main.2f1818ff.js",
     "static/media/Tradition.png": "/parkit/static/media/Tradition.23d03be9a3b71fcbd720.png",
     "static/media/Default.png": "/parkit/static/media/Default.50d5c8db37b966068a0a.png",
     "static/media/main.svg": "/parkit/static/media/main.5e0cf07830965cf6e0a606ee26757d0b.svg",
@@ -29,10 +29,10 @@
     "static/media/navbar.svg": "/parkit/static/media/navbar.4bac4cf3120ce46741129e42a9aebdb1.svg",
     "static/media/cloud-s.svg": "/parkit/static/media/cloud-s.3ac8145941bd7d79eb96c50c35268ce0.svg",
     "main.0dcac4e4.css.map": "/parkit/static/css/main.0dcac4e4.css.map",
-    "main.27e3ce24.js.map": "/parkit/static/js/main.27e3ce24.js.map"
+    "main.2f1818ff.js.map": "/parkit/static/js/main.2f1818ff.js.map"
   },
   "entrypoints": [
     "static/css/main.0dcac4e4.css",
-    "static/js/main.27e3ce24.js"
+    "static/js/main.2f1818ff.js"
   ]
 }
