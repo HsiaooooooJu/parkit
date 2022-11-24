@@ -20,7 +20,7 @@ export default function Parking() {
   })
 
   // state for filterBtn
-  const [isSelected, setIsSelected] = useState({ remain: '', nearby: '300m' })
+  const [isSelected, setIsSelected] = useState({ remain: 'many', nearby: '' })
 
   // get current location from LocationMarker using callback function
   let passData = (data) => {
@@ -70,8 +70,8 @@ export default function Parking() {
   return (
     <MapContainer
       center={[currentPosition.lat, currentPosition.lng]}
-      zoom={16}
-      minZoom={14}
+      zoom={15}
+      minZoom={13}
       scrollWheelZoom={false}
       whenReady={whenReadyHandler}
     >
