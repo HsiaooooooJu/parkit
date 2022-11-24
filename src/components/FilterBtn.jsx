@@ -73,7 +73,7 @@ export default function FilterBtn({ isSelected, setIsSelected }) {
                 onClick={filterVacancy}
                 isSelected={isSelected}
               >
-                空位大於 20 個
+                空位大於 10 個
               </Radio>
               <Radio
                 htmlFor='some'

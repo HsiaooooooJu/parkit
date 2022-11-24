@@ -8,7 +8,7 @@ export default function QuickStart() {
   return (
     <div className='quick-container'>
       <div className='quick-container_title'>使用說明</div>
-      <List src={greenStall}>剩餘車位大於 20 個</List>
+      <List src={greenStall}>剩餘車位大於 10 個</List>
       <List src={blueStall}>剩餘車位 0 - 10 個</List>
       <List src={redStall}>無剩餘車位</List>
       <List src={grayStall}>未提供資料</List>
