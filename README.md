@@ -35,7 +35,7 @@ User will first enter the landing page, and can navigate to the map which will s
 #### Clone the project
 
 ```
-git clone https://github.com/HsiaooooooJu/simple-twitter.git
+git clone https://github.com/HsiaooooooJu/parkit.git
 ```
 
 #### Project setup
@@ -58,6 +58,5 @@ npm run start
 Compiled successfully!
 
 You can now view parkit in the browser.
-
-  Local:            http://localhost:3000/parkit
+Local : http://localhost:3000/parkit
 ```
